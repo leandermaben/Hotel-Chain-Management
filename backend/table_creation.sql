@@ -1,14 +1,81 @@
-create table branch(branch_id varchar(10) primary key,street varchar(100),city varchar(100),gm_id varchar(10),phone varchar(20));
-create table employee(emp_id varchar(10) primary key, fname varchar(100), lname varchar(100), position varchar(100), joined date, released date, salary number(10,2), branch_id varchar(10),foreign key(branch_id) references branch(branch_id));
-alter table branch add foreign key(gm_id) references employee(emp_id) on update cascade; 
-create table shifts(shift_id varchar(10) primary key, duty varchar(100), slot_start time, slot_end time,floor varchar(10));
-create table rooms(branch_id varchar(10), room_num varchar(10), floor varchar(10), stat varchar(50), booked varchar(10), serviced varchar(10), basic_cost number(10,2),foreign key(branch_id) references branch(branch_id),primary key(branch_id,room_num));
-create table customer(customer_id varchar(10) primary key, fname varchar(100), lname varchar(100), email varchar(200), aadhar_number varchar(50), passport_number varchar(50));
-create table stay(transaction_id varchar(10) primary key, customer_id varchar(10),check_in date,check_out date,extra_cost number(10,2),foreign key(customer_id) references customer(customer_id));
-create table invoice(bill_id varchar(10) primary key, issued date, price number(10,2), transaction_id varchar(10), customer_id varchar(10),foreign key(customer_id) references customer(customer_id),foreign key(transaction_id) references stay(transaction_id));
-create table food(item varchar(100) primary key, price number(10,2), sold number(100));
-create table booking(booking_id varchar(10) primary key, booked_on date, room_number varchar(10), branch_id varchar(10), stat varchar(50), customer_id varchar(10),foreign key(customer_id) references customer(customer_id),foreign key(branch_id) references branch(branch_id));
-create table accounts(log_date date primary key, kitchen number(10,2), taxes number(10,2), bills number(10,2), other number(10,2));
-create table contain(bill_id varchar(10),food_item varchar(10),primary key(bill_id,food_item),foreign key(bill_id) references invoice(bill_id),foreign key(food_item) references food(item));
-create table avail(transaction_id varchar(10), room_num varchar(10), branch_id varchar(10),primary key(transaction_id,room_num,branch_id),foreign key(transaction_id) references stay(transaction_id),foreign key(room_number) references rooms(room_number),foreign key(branch_id) references branch(branch_id));
-create table allotment(emp_id varchar(10), shift_id varchar(10), scheduled date);
+create table branch(branch_id varchar(10) primary key,
+                    street varchar(100),
+                    city varchar(100),
+                    gm_id varchar(10),
+                    phone varchar(20));
+create table employee(emp_id varchar(10) primary key, 
+                    fname varchar(100), 
+                    lname varchar(100), 
+                    gender varchar(1),
+                    position varchar(100), 
+                    joined date, 
+                    released date, 
+                    salary number(10,2), 
+                    branch_id varchar(10),
+                    foreign key(branch_id) references branch(branch_id),
+                    check(gender in('M','F')));
+alter table branch add constraint gm_key foreign key(gm_id) references employee(emp_id) ; 
+create table shift(shift_id varchar(10) primary key, 
+                    duty varchar(100), 
+                    slot_start timestamp, 
+                    slot_end timestamp,
+                    floor varchar(10));
+create table room(branch_id varchar(10), 
+                    room_num varchar(10), 
+                    floor varchar(10), 
+                    stat varchar(50), 
+                    booked varchar(10), 
+                    serviced varchar(10), 
+                    basic_cost number(10,2),
+                    primary key(branch_id,room_num),
+                    foreign key(branch_id) references branch(branch_id));
+create table customer(customer_id varchar(10) primary key, 
+                    fname varchar(100),
+                    lname varchar(100), 
+                    email varchar(200), 
+                    aadhar_number varchar(50), 
+                    passport_number varchar(50));
+create table stay(transaction_id varchar(10) primary key, 
+                    customer_id varchar(10),
+                    check_in date,check_out date,
+                    extra_cost number(10,2),
+                    foreign key(customer_id) references customer(customer_id) );
+create table invoice(bill_id varchar(10) primary key, 
+                    issued date, price number(10,2), 
+                    transaction_id varchar(10), 
+                    customer_id varchar(10),
+                    foreign key(customer_id) references customer(customer_id) ,
+                    foreign key(transaction_id) references stay(transaction_id));
+create table food(item varchar(100) primary key, 
+                    price number(10,2), 
+                    sold number(25));
+create table booking(booking_id varchar(10) primary key, 
+                    booked_on date, 
+                    room_number varchar(10), 
+                    branch_id varchar(10), 
+                    stat varchar(50), 
+                    customer_id varchar(10),
+                    foreign key(customer_id) references customer(customer_id),
+                    foreign key(branch_id) references branch(branch_id) );
+create table accounts(log_date date primary key, 
+                    kitchen number(10,2), 
+                    taxes number(10,2), 
+                    bills number(10,2), 
+                    other number(10,2));
+create table contain(bill_id varchar(10),
+                    food_item varchar(10),
+                    primary key(bill_id,food_item),
+                    foreign key(bill_id) references invoice(bill_id),
+                    foreign key(food_item) references food(item));
+create table avail(transaction_id varchar(10), 
+                    room_num varchar(10), 
+                    branch_id varchar(10),
+                    primary key(transaction_id,room_num,branch_id),
+                    foreign key(transaction_id) references stay(transaction_id),
+                    foreign key(branch_id,room_num) references room(branch_id,room_num));
+create table allotment(emp_id varchar(10), 
+                    shift_id varchar(10), 
+                    scheduled date,
+                    primary key(emp_id,shift_id,scheduled),
+                    foreign key(emp_id) references employee(emp_id) ,
+                    foreign key(shift_id) references shift);
