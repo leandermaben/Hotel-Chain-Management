@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="467.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <effect>
+      <Blend opacity="0.58" />
+   </effect>
+   <children>
+      <VBox prefHeight="522.0" prefWidth="129.0" style="-fx-background-color: SLATEGREY;">
+         <effect>
+            <Blend />
+         </effect>
+      </VBox>
+      <Label layoutX="149.0" layoutY="231.0" text="USER ID:" textFill="#dee127" />
+      <TextField fx:id="userid" layoutX="245.0" layoutY="227.0" />
+      <Label layoutX="149.0" layoutY="303.0" text="PASSWORD:" textFill="#dee127" />
+      <PasswordField fx:id="password" layoutX="245.0" layoutY="299.0" />
+      <Button fx:id="loginbtn" layoutX="342.0" layoutY="389.0" mnemonicParsing="false" onAction="#login" text="Login" />
+   </children>
+</AnchorPane>
