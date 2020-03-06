@@ -4,41 +4,29 @@
 	-fx-background-repeat:stretch;
 }
  */
+ .jfx-badge{
+	-fx-border-color: white;
+	-fx-background-radius:25;
+	-fx-border-radius:25;
+	
+}
 #allot{
 	-fx-background-color:  linear-gradient(to top right,#c7596f 0%, #bd062b 100%);
-	-fx-background-radius:25;
-	-fx-border-color: white;
-	-fx-border-radius:25;
 }
 #book{
 	-fx-background-color:  linear-gradient(to top right,rgba(0,219,255,1) 0%, rgba(0,125,255,1) 100%);
-	-fx-background-radius:25;
-	-fx-border-color: white;
-	-fx-border-radius:25;
 }
 #hire{
 	-fx-background-color:  linear-gradient(to top right, #58e286 0%, #05a139 100%);
-	-fx-border-color: white;
-	-fx-background-radius:25;
-	-fx-border-radius:25;
 }
 #access{
 	-fx-background-color:  linear-gradient(to top right, rgba(255,196,106,1) 0%, rgba(255,154,0,1) 100%);
-	-fx-border-color: white;
-	-fx-background-radius:25;
-	-fx-border-radius:25;
 }
 #search{
 	-fx-background-color:  linear-gradient(to top right, rgba(185,139,255,1) 0%, rgba(102,0,255,1) 100%);
-	-fx-border-color: white;
-	-fx-background-radius:25;
-	-fx-border-radius:25;
 }
 #update{
 	-fx-background-color:  linear-gradient(to top right, rgba(255,251,108,1) 0%, rgba(255,201,0,1) 100%);
-	-fx-border-color: white;
-	-fx-background-radius:25;
-	-fx-border-radius:25;
 }
 #profits{
 	-fx-border-color: black;
@@ -71,4 +59,8 @@
 }
 #updatebtn{
 	-fx-background-color:  #ffd100;
+}
+.infoArea{
+	-fx-background-color:  white;
+	-fx-border-width:3;
 }
