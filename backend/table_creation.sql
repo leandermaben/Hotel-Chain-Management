@@ -34,7 +34,9 @@ create table customer(customer_id varchar(10) primary key,
                     lname varchar(100), 
                     email varchar(200), 
                     aadhar_number varchar(50), 
-                    passport_number varchar(50));
+                    passport_number varchar(50),
+                    gender varchar(1),
+                    check(gender in('M','F')));
 create table stay(transaction_id varchar(10) primary key, 
                     customer_id varchar(10),
                     check_in date,check_out date,
@@ -79,3 +81,6 @@ create table allotment(emp_id varchar(10),
                     primary key(emp_id,shift_id,scheduled),
                     foreign key(emp_id) references employee(emp_id) ,
                     foreign key(shift_id) references shift);
+create table phone(customer_id varchar(10),
+                    phone varchar(20),
+                    foreign key(customer_id) references customer(customer_id));

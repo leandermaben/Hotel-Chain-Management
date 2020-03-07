@@ -3,11 +3,13 @@
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,10 +17,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <children>
     <VBox layoutX="8.0" layoutY="252.0" prefHeight="881.0" prefWidth="252.0" style="-fx-background-color: #000428;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-    <GridPane layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%);;" AnchorPane.bottomAnchor="824.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <GridPane layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%);;" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
     <columnConstraints>
              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,41 +35,97 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane hgap="20.0" layoutX="-7.0" layoutY="-1.0" prefHeight="790.0" prefWidth="1069.0" vgap="20.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                        <GridPane hgap="20.0" layoutX="15.0" layoutY="16.0" prefHeight="790.0" prefWidth="1069.0" vgap="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="16.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="708.0" minWidth="10.0" prefWidth="667.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="529.0" minWidth="10.0" prefWidth="402.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="708.0" minWidth="10.0" prefWidth="587.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="529.0" minWidth="10.0" prefWidth="432.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints maxHeight="443.0" minHeight="10.0" prefHeight="301.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="443.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="765.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="443.0" minHeight="10.0" prefHeight="347.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="443.0" minHeight="10.0" prefHeight="391.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXBadge prefHeight="444.0" prefWidth="652.0" style="-fx-border-color: #08a40b;" styleClass="infoArea" GridPane.rowIndex="2">
+                              <JFXBadge prefHeight="261.0" prefWidth="642.0" style="-fx-border-color: #08a40b;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.rowSpan="2">
                                  <children>
-                                    <Label text="Customer Info" />
+                                    <Label text="Customer Info" translateX="-120.0" translateY="-320.0">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font></Label>
+                                    <JFXTextField fx:id="cifname" labelFloat="true" maxWidth="300.0" promptText="First Name" translateX="-45.0" translateY="-250.0" />
+                                    <JFXTextField fx:id="cilname" labelFloat="true" maxWidth="300.0" promptText="Last Name" translateX="-45.0" translateY="-190.0" />
+                                    <JFXTextField fx:id="cipn" labelFloat="true" maxWidth="300.0" promptText="Phone Number" translateX="-45.0" translateY="-130.0" />
+                                    <JFXTextField fx:id="ciem" labelFloat="true" maxWidth="300.0" promptText="Email ID" translateX="-45.0" translateY="-70.0" />
+                                    <JFXTextField fx:id="ciac" labelFloat="true" maxWidth="300.0" promptText="Aadhar Card Number" translateX="-45.0" translateY="-10.0" />
+                                    <JFXTextField fx:id="cipt" maxWidth="300.0" promptText="Passport Number" translateX="-45.0" translateY="50.0" />
+                                    <JFXTextField fx:id="ciapt" maxWidth="300.0" promptText="Aadhar/Passport" translateX="-45.0" translateY="240.0" />
+                                    <Label text="Add Phone Number" translateX="-120.0" translateY="180.0">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="ciapn" maxWidth="300.0" promptText="Phone Number" translateX="-45.0" translateY="300.0" />
+                                    <JFXButton fx:id="cibtn" onAction="#addCustomer" prefHeight="27.0" prefWidth="70.0" ripplerFill="WHITE" style="-fx-background-color: Black;" text="Submit" textFill="WHITE" translateX="160.0" translateY="140.0" />
+                                    <JFXButton fx:id="ciabtn" onAction="#addPhone" prefHeight="27.0" prefWidth="70.0" ripplerFill="WHITE" style="-fx-background-color: Black;" text="Add" textFill="WHITE" translateX="160.0" translateY="340.0" />
+                                    <JFXRadioButton fx:id="cimale" text="Male" translateX="-160.0" translateY="100.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="cinfo" />
+                                       </toggleGroup>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="cifemale" text="Female" toggleGroup="$cinfo" translateY="100.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </JFXRadioButton>
                                  </children></JFXBadge>
                               <JFXBadge style="-fx-border-color: #bd062b;" styleClass="infoArea">
                                  <padding>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </padding>
                                  <children>
-                                    <Label text="Book" translateX="-275.0" translateY="-125.0">
+                                    <Label text="Book" translateX="-245.0" translateY="-125.0">
                                        <font>
-                                          <Font size="22.0" />
+                                          <Font name="System Bold" size="22.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField labelFloat="true" prefColumnCount="0" prefHeight="25.0" prefWidth="383.0" promptText="Phone Number" translateY="-75.0" />
-                                    <JFXTextField labelFloat="true" promptText="Room Number" translateY="50.0" />
-                                    <JFXButton prefHeight="27.0" prefWidth="70.0" ripplerFill="WHITE" style="-fx-background-color: Black;" text="Submit" textFill="WHITE" translateX="250.0" translateY="110.0" />
-                                    <JFXDatePicker promptText="From" translateX="-215.0" translateY="-20.0" />
-                                    <JFXDatePicker promptText="To" translateY="-20.0" />
+                                    <JFXTextField fx:id="bkpn" labelFloat="true" maxWidth="400.0" prefColumnCount="0" prefHeight="25.0" prefWidth="383.0" promptText="Phone Number" translateX="-70.0" translateY="-60.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></JFXTextField>
+                                    <JFXTextField fx:id="bkrm" labelFloat="true" maxWidth="400.0" promptText="Room Number" translateX="-70.0" translateY="100.0" />
+                                    <JFXButton fx:id="bkbtn" onAction="#book" prefHeight="27.0" prefWidth="70.0" ripplerFill="WHITE" style="-fx-background-color: Black;" text="Book" textFill="WHITE" translateX="220.0" translateY="140.0" />
+                                    <JFXDatePicker fx:id="bkfr" promptText="From" translateX="-185.0" translateY="-5.0" />
+                                    <JFXDatePicker fx:id="bkto" promptText="To" translateX="30.0" translateY="-5.0" />
+                                    <JFXTextField fx:id="bkbr_id" labelFloat="true" maxWidth="400.0" promptText="Branch ID" translateX="-70.0" translateY="45.0" />
                                  </children>
                               </JFXBadge>
                               <JFXBadge style="-fx-border-color: #0c90c7;" styleClass="infoArea" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="Update Status" />
+                                    <Label text="Update" translateX="-245.0" translateY="-150.0">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font></Label>
+                                    <JFXTextField fx:id="bkupid" labelFloat="true" maxWidth="400.0" promptText="Booking Id" translateX="-70.0" translateY="-85.0" />
+                                    <JFXRadioButton fx:id="bkupcn" text="cancel" translateX="-220.0" translateY="-20.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="bookUp" />
+                                       </toggleGroup>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="bkupup" text="update" toggleGroup="$bookUp" translateY="-20.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXTextField fx:id="bkupbr_id" labelFloat="true" maxWidth="400.0" promptText="Branch ID" translateX="-70.0" translateY="80.0" />
+                                    <JFXDatePicker fx:id="bkupfr" promptText="From" translateX="-185.0" translateY="30.0" />
+                                    <JFXDatePicker fx:id="bkupto" promptText="To" translateX="30.0" translateY="30.0" />
+                                    <JFXTextField fx:id="bkuprm" labelFloat="true" maxWidth="400.0" promptText="Room number" translateX="-70.0" translateY="130.0" />
+                                    <JFXButton fx:id="bkupbtn" onAction="#updateBook" prefHeight="27.0" prefWidth="70.0" ripplerFill="WHITE" style="-fx-background-color: Black;" text="Update" textFill="WHITE" translateX="220.0" translateY="170.0" />
                                  </children></JFXBadge>
                            </children>
                         </GridPane>
