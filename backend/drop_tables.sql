@@ -1,3 +1,4 @@
+drop table phone;
 drop table allotment;
 drop table avail;
 drop table contain;

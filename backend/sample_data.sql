@@ -1,0 +1,11 @@
+insert into branch values('NY101','Baker','New York',null,1234);
+insert into food values('Chicken Steak',350,0);
+insert into food values('Dragon Chicken',350,0);
+insert into food values('Drums of Heaven',350,0);
+insert into food values('Tripple Schezuan',350,0);
+insert into food values('Fried Rice',350,0);
+insert into room values('NY101','305','3','vacant','n','y',5000);
+insert into room values('NY101','306','3','vacant','n','y',5000);
+insert into room values('NY101','307','3','vacant','n','y',5000);
+insert into room values('NY101','308','3','vacant','n','y',5000);
+insert into room values('NY101','309','3','vacant','n','y',5000);
