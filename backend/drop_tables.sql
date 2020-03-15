@@ -1,6 +1,5 @@
 drop table phone;
 drop table allotment;
-drop table avail;
 drop table contain;
 drop table accounts;
 drop table booking;

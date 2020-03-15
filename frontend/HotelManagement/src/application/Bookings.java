@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.format.DateTimeFormatter;
 
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -95,29 +96,30 @@ public class Bookings extends RecursiveTreeObject<Bookings>{
 			PreparedStatement ps1;
 			if(!booked) {
 				if(fname==null && lname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking natural join customer");
+					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer");
 				}else if(fname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking where customer_id where lname='"+lname+"'");
+					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where lname='"+lname+"'");
 				}else if(lname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking where customer_id where fname='"+fname+"'");
+					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'");
 				}else {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"'");
+					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"'");
 				}
 			}else {
 					if(fname==null && lname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking natural join customer where stat='booked'");
+						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where stat='booked'");
 					}else if(fname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking where customer_id where lname='"+lname+"' and stat='booked'");
+						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where lname='"+lname+"' and stat='booked'");
 					}else if(lname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking where customer_id where fname='"+fname+"' and stat='booked'");
+						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"' and stat='booked'");
 					}else {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_number,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"' and stat='booked'");
+						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"' and stat='booked'");
 					}
 			}
 			ResultSet rs=ps1.executeQuery();
 			ObservableList<Bookings> bookings=FXCollections.observableArrayList();
+			DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			while(rs.next()) {
-				bookings.add(new Bookings(new SimpleStringProperty(rs.getString(1)),new SimpleStringProperty(rs.getString(2)),new SimpleStringProperty(rs.getString(3)),new SimpleStringProperty(rs.getString(4)),new SimpleStringProperty(rs.getString(5)),new SimpleStringProperty(rs.getString(6)),new SimpleStringProperty(rs.getString(7)),new SimpleStringProperty(rs.getString(8)),new SimpleStringProperty(rs.getString(9))));
+				bookings.add(new Bookings(new SimpleStringProperty(rs.getString(1)),new SimpleStringProperty(rs.getDate(2).toLocalDate().format(df)),new SimpleStringProperty(rs.getDate(3).toLocalDate().format(df)),new SimpleStringProperty(rs.getString(4)),new SimpleStringProperty(rs.getString(5)),new SimpleStringProperty(rs.getString(6)),new SimpleStringProperty(rs.getString(7)),new SimpleStringProperty(rs.getString(8)),new SimpleStringProperty(rs.getString(9))));
 			}
 			return bookings;
 			
