@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogisticsController">
+   <children>
+    <VBox layoutX="8.0" layoutY="252.0" prefHeight="881.0" prefWidth="252.0" style="-fx-background-color: #000428;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <GridPane layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%);;" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+         </GridPane>
+      <JFXTabPane layoutX="252.0" layoutY="52.0" prefHeight="829.0" prefWidth="1069.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
+         <tabs>
+           <Tab text="Employee">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane hgap="20.0" layoutY="7.0" prefHeight="782.0" prefWidth="1069.0" style="-fx-padding: 20;" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXBadge style="-fx-border-color: #bd062b;" styleClass="infoArea">
+                                 <children>
+                                    <JFXTextField fx:id="epfname" labelFloat="true" maxWidth="300.0" promptText="First Name" translateX="-70.0" translateY="-240.0" />
+                                    <Label text="Hire" translateX="-200.0" translateY="-320.0">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="eplname" labelFloat="true" maxWidth="300.0" promptText="Last Name" translateX="-70.0" translateY="-150.0" />
+                                    <JFXTextField fx:id="epbr" labelFloat="true" maxWidth="300.0" promptText="Branch Id" translateX="-70.0" translateY="-60.0" />
+                                    <JFXTextField fx:id="eppos" labelFloat="true" maxWidth="300.0" promptText="Position" translateX="-70.0" translateY="30.0" />
+                                    <JFXTextField fx:id="epsal" labelFloat="true" maxWidth="300.0" promptText="Salary" translateX="-70.0" translateY="120.0" />
+                                    <JFXButton onAction="#hire" prefHeight="27.0" prefWidth="64.0" styleClass="sub_button" text="Hire" translateX="180.0" translateY="340.0" />
+                                    <JFXTextField fx:id="epad" labelFloat="true" maxWidth="300.0" prefHeight="0.0" promptText="Aadhar Card Number" translateX="-70.0" translateY="210.0" />
+                                    <JFXRadioButton text="Male" translateX="-175.0" translateY="300.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="adr" />
+                                       </toggleGroup>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton text="Female" toggleGroup="$adr" translateY="300.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                 </children></JFXBadge>
+                              <JFXBadge style="-fx-border-color: rgba(102,0,255,1);" styleClass="infoArea" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label text="Release" translateX="-180.0" translateY="-320.0">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="epid" labelFloat="true" maxWidth="300.0" prefHeight="0.0" promptText="Employee Id" translateX="-70.0" translateY="-210.0" />
+                                    <JFXButton onAction="#showEmployee" prefHeight="20.0" prefWidth="60.0" styleClass="sub_button" text="Show" translateX="180.0" translateY="-210.0" />
+                                    <JFXButton fx:id="release" onAction="#release" prefHeight="27.0" prefWidth="65.0" styleClass="sub_button" text="Release" translateX="180.0" translateY="300.0" />
+                                    <Label fx:id="epinfo" prefHeight="319.0" prefWidth="318.0" style="-fx-background-color: white; -fx-border-color: black;" translateX="-60.0" translateY="40.0" />
+                                 </children></JFXBadge>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Building and Kitchen">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane hgap="20.0" layoutX="8.0" layoutY="14.0" style="-fx-padding: 20;" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXBadge style="-fx-border-color: rgba(255,196,106,1);" styleClass="infoArea">
+                                 <children>
+                                    <Label text="Room" translateX="-200.0" translateY="-150.0">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="rmbr" labelFloat="true" maxWidth="300.0" promptText="Branch Id" translateX="-70.0" translateY="-100.0" />
+                                    <JFXRadioButton fx:id="adbtn" text="Add" toggleGroup="$adr" translateX="-180.0" translateY="140.0">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="rmbtn" text="Remove" toggleGroup="$adr" translateY="140.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXButton fx:id="room" onAction="#room" styleClass="sub_button" text="Submit" translateX="180.0" translateY="140.0" />
+                                    <JFXTextField fx:id="rmrm" maxWidth="300.0" promptText="Room Number" translateX="-70.0" translateY="-40.0" />
+                                    <JFXTextField fx:id="rmfl" labelFloat="true" maxWidth="300.0" promptText="Floor" translateX="-70.0" translateY="20.0" />
+                                    <JFXTextField fx:id="rmbc" labelFloat="true" maxWidth="300.0" promptText="Basic Cost" translateX="-70.0" translateY="80.0" />
+                                 </children>
+                              </JFXBadge>
+                              <JFXBadge style="-fx-border-color: rgba(102,0,255,1);" styleClass="infoArea" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Food" translateX="-200.0" translateY="-150.0">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="fdit" labelFloat="true" maxWidth="300.0" promptText="Item" translateX="-70.0" translateY="-60.0" />
+                                    <JFXTextField fx:id="fdpr" labelFloat="true" maxWidth="300.0" promptText="Price" translateX="-70.0" translateY="30.0" />
+                                    <JFXRadioButton fx:id="fdad" text="Add" toggleGroup="$adr" translateX="-180.0" translateY="120.0">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="rmbtn1" text="Remove" toggleGroup="$adr" translateY="120.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXButton onAction="#food" styleClass="sub_button" text="Submit" translateX="180.0" translateY="140.0" />
+                                 </children>
+                              </JFXBadge>
+                              <JFXBadge style="-fx-border-color: #0c90c7;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                                 <children>
+                                    <Label text="Branch" translateX="-190.0" translateY="-330.0">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="brst" labelFloat="true" maxWidth="300.0" promptText="Street (if add)" translateX="-70.0" translateY="-150.0" />
+                                    <JFXTextField fx:id="brct" labelFloat="true" maxWidth="300.0" promptText=" City (if add)" translateX="-70.0" translateY="-60.0" />
+                                    <JFXTextField fx:id="brupbr" labelFloat="true" maxWidth="300.0" promptText="Branch Id" translateX="-70.0" translateY="120.0" />
+                                    <JFXButton onAction="#branch" styleClass="sub_button" text="Submit" translateX="180.0" />
+                                    <Label text="Update" translateX="-190.0" translateY="50.0">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="brgm" labelFloat="true" maxWidth="300.0" promptText="General manager Id" translateX="-70.0" translateY="210.0" />
+                                    <JFXTextField fx:id="brmp" labelFloat="true" maxWidth="300.0" promptText="Main Phone" translateX="-70.0" translateY="300.0" />
+                                    <JFXButton onAction="#branchUpdate" styleClass="sub_button" text="Update" translateX="180.0" translateY="340.0" />
+                                    <JFXRadioButton fx:id="adbn2" text="Add" toggleGroup="$adr" translateX="-180.0">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXRadioButton fx:id="adbtn21" text="Remove" toggleGroup="$adr">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </JFXRadioButton>
+                                    <JFXTextField fx:id="brbr" labelFloat="true" maxWidth="300.0" promptText="Branch Id" translateX="-70.0" translateY="-240.0" />
+                                 </children>
+                              </JFXBadge>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Accounts">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane hgap="20.0" layoutX="520.0" layoutY="134.0" style="-fx-padding: 50;" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXBadge style="-fx-border-color: #bd062b; -fx-padding: 50;" styleClass="infoArea">
+                                 <children>
+                                    <JFXDatePicker fx:id="tbdt" promptText="Date" translateX="-135.0" translateY="-160.0" />
+                                    <JFXTextField fx:id="tbkt" maxWidth="300.0" prefWidth="300.0" promptText="Kitchen" translateX="-70.0" translateY="-90.0" />
+                                    <JFXTextField fx:id="tbtx" maxWidth="300.0" prefWidth="300.0" promptText="Taxes" translateX="-70.0" translateY="-20.0" />
+                                    <JFXTextField fx:id="tbbl" maxWidth="300.0" prefWidth="300.0" promptText="Blils" translateX="-70.0" translateY="50.0" />
+                                    <JFXTextField fx:id="tbot" maxWidth="300.0" prefWidth="300.0" promptText="Other" translateX="-70.0" translateY="120.0" />
+                                    <Label text="Tabulate" translateX="-180.0" translateY="-250.0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="tabulate" onAction="#tabulate" styleClass="sub_button" text="Tabulate" translateX="150.0" translateY="300.0" />
+                                    <JFXTextField fx:id="tbbr" labelFloat="true" maxWidth="300.0" promptText="Branch Id" translateX="-70.0" translateY="190.0" />
+                                 </children>
+                              </JFXBadge>
+                              <JFXBadge style="-fx-border-color: #08a40b;" styleClass="infoArea" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label text="Delete" translateY="-150.0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="delete" onAction="#delete" styleClass="sub_button" text="Delete" translateY="150.0" />
+                                    <JFXDatePicker fx:id="deldt" promptText="Date" translateY="-50.0" />
+                                    <JFXTextField fx:id="delbr" labelFloat="true" maxWidth="200.0" promptText="Branch Id" translateY="50.0" />
+                                 </children>
+                              </JFXBadge>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>
