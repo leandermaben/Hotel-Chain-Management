@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="467.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="994.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -15,15 +25,86 @@
       <Blend opacity="0.58" />
    </effect>
    <children>
-      <VBox prefHeight="522.0" prefWidth="129.0" style="-fx-background-color: SLATEGREY;">
-         <effect>
-            <Blend />
-         </effect>
-      </VBox>
-      <Label layoutX="149.0" layoutY="231.0" text="USER ID:" textFill="#dee127" />
-      <TextField fx:id="userid" layoutX="245.0" layoutY="227.0" />
-      <Label layoutX="149.0" layoutY="303.0" text="PASSWORD:" textFill="#dee127" />
-      <PasswordField fx:id="password" layoutX="245.0" layoutY="299.0" />
-      <Button fx:id="loginbtn" layoutX="342.0" layoutY="389.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <ImageView fitHeight="696.0" fitWidth="994.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@paolo-nicolello-2gOxKj594nM-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="461.0" layoutY="25.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="25.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXBadge opacity="0.75" prefHeight="618.0" prefWidth="501.0" style="-fx-background-color: black; -fx-border-color: transparent;">
+               <children>
+                  <Label prefHeight="59.0" prefWidth="95.0" text="Setup" textFill="WHITE" translateX="-175.0" translateY="-250.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="32.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="First Name" translateX="-70.0" translateY="-170.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></JFXTextField>
+                  <JFXTextField labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Last Name" translateX="-70.0" translateY="-90.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Phone Number" translateX="-70.0" translateY="-10.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Aadhar Number" translateX="-70.0" translateY="70.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXRadioButton text="Male" translateX="-150.0" translateY="150.0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gd" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton text="Female" toggleGroup="$gd" translateY="150.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXPasswordField labelFloat="true" maxWidth="300.0" promptText="Password" translateX="-70.0" translateY="200.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXPasswordField>
+                  <JFXPasswordField labelFloat="true" maxWidth="300.0" promptText="Confirm Password" translateX="-70.0" translateY="270.0" unFocusColor="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </JFXPasswordField>
+                  <JFXButton style="-fx-border-color: transparent;" text="Submit" translateX="200.0" translateY="270.0">
+                     <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton style="-fx-border-color: transparent;" text="Sign In" translateX="190.0" translateY="-250.0">
+                     <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <Label text="Use Employee Id 1000 for future Sign In" translateX="-90.0" translateY="-210.0">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </JFXBadge>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

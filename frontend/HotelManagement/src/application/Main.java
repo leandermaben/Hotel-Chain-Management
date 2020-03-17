@@ -12,10 +12,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Logistics.fxml"));
-			Scene scene = new Scene(root,700,700);
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("home.fxml"));
+			Scene scene = new Scene(root,994,696);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.initStyle(StageStyle.DECORATED);
+			//primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
