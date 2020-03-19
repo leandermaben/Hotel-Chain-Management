@@ -68,3 +68,15 @@
 	-fx-background-color: black;
 	-fx-text-fill: white;
 }
+#addAccount{
+	-fx-background-color:  linear-gradient(to top left, #ffb855 0%, #cf7900 100%);
+}
+#addSupervisor{
+	-fx-background-color:  linear-gradient(to top right, #d7d7d7 0%, #4a4a4a 100%);
+}
+#addAdmin{
+	-fx-background-color:  linear-gradient(to top left, #fffb6c 0%, #d7a711 100%);
+}
+
+
+

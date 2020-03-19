@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPageController">
    <children>
       <VBox layoutX="8.0" layoutY="252.0" prefHeight="881.0" prefWidth="252.0" style="-fx-background-color: #000428;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <GridPane hgap="40.0" layoutX="252.0" layoutY="65.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: F3F3F3; -fx-padding: 10;" vgap="40.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="65.0">
@@ -34,7 +34,7 @@
          <children>
             <JFXBadge fx:id="book">
                <children>
-                  <JFXButton fx:id="bookbtn" buttonType="RAISED" text="Launch" textFill="WHITE" translateY="75.0">
+                  <JFXButton fx:id="bookbtn" buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="75.0">
                      <font>
                         <Font size="15.0" />
                      </font></JFXButton>
@@ -74,15 +74,15 @@
             </JFXBadge>
             <JFXBadge fx:id="allot" prefHeight="229.0" prefWidth="219.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="allotbtn" mnemonicParsing="false" text="Button" translateY="75.0" />
+                  <Button fx:id="allotbtn" mnemonicParsing="false" onAction="#launchAllot" text="Button" translateY="75.0" />
                </children></JFXBadge>
             <JFXBadge fx:id="access" GridPane.columnIndex="3">
                <children>
-                  <Button fx:id="accessbtn" mnemonicParsing="false" text="Button" translateY="75.0" />
+                  <Button fx:id="accessbtn" mnemonicParsing="false" onAction="#launchClearance" text="Button" translateY="75.0" />
                </children></JFXBadge>
             <JFXBadge fx:id="hire" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="hirebtn" mnemonicParsing="false" text="Button" translateY="75.0" />
+                  <Button fx:id="hirebtn" mnemonicParsing="false" onAction="#launchLogistics" text="Button" translateY="75.0" />
                </children></JFXBadge>
             <JFXBadge fx:id="notif" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <children>

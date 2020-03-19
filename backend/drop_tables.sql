@@ -1,3 +1,4 @@
+drop table users;
 drop table phone;
 drop table allotment;
 drop table contain;

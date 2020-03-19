@@ -93,3 +93,7 @@ create table allotment(emp_id varchar(10),
 create table phone(customer_id varchar(10),
                     phone varchar(20),
                     foreign key(customer_id) references customer(customer_id));
+create table users(emp_id varchar(10) primary key,
+                    pin varchar(20),
+                    clearance varchar(10),
+                    foreign key(emp_id) references employee(emp_id));
