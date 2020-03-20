@@ -48,7 +48,7 @@ public class ClearanceController {
 	ObservableList<String> ad;
 	
     
-    void initialize() {
+    public void initialize() {
     	nemp=FXCollections.observableArrayList();
     	emp=FXCollections.observableArrayList();
     	nsupervisor=FXCollections.observableArrayList();

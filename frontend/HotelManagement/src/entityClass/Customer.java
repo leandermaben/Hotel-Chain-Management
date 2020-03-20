@@ -1,4 +1,4 @@
-package application;
+package entityClass;
 
 public class Customer {
 	String customer_id;

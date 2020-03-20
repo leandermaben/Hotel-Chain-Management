@@ -2,6 +2,7 @@ package application;
 
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

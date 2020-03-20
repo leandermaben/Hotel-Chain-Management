@@ -1,4 +1,4 @@
-package application;
+package entityClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,7 +42,7 @@ public class Room extends RecursiveTreeObject<Room>{
 		lname=l;
 		customer_id=m;
 	}
-static ObservableList<Room> getRoomData(java.util.Date from,java.util.Date to){
+public static ObservableList<Room> getRoomData(java.util.Date from,java.util.Date to){
 		try {
 			Connection con=dbConnect();
 			PreparedStatement ps1=null;

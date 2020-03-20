@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Bookings extends RecursiveTreeObject<Bookings>{
+public class Employee extends RecursiveTreeObject<Bookings>{
 	private StringProperty booking_id;
 	private StringProperty booked_from;
 	private StringProperty booked_to;
