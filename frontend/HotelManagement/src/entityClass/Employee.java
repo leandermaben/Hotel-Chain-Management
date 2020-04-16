@@ -9,63 +9,33 @@ import java.time.format.DateTimeFormatter;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Employee extends RecursiveTreeObject<Bookings>{
-	private StringProperty booking_id;
-	private StringProperty booked_from;
-	private StringProperty booked_to;
-	private StringProperty room_number;
-	private StringProperty branch_id;
-	private StringProperty stat;
-	private StringProperty customer_id;
+public class Employee extends RecursiveTreeObject<Employee>{
+	
+	private StringProperty emp_id;
 	private StringProperty fname;
 	private StringProperty lname;
+	private StringProperty gender;
+	private StringProperty position;
+	private StringProperty joined;
+	private StringProperty released;
+	private DoubleProperty salary;
+	private StringProperty aadhar_number;
+	private StringProperty branch_id;
+	private StringProperty pin;
+	private StringProperty clearance;
 	
-	public StringProperty getBooking_id() {
-		return booking_id;
+	public StringProperty getEmp_id() {
+		return emp_id;
 	}
-	public void StringProperty(StringProperty booking_id) {
-		this.booking_id = booking_id;
-	}
-	public StringProperty getBooked_from() {
-		return booked_from;
-	}
-	public void setBooked_from(StringProperty booked_from) {
-		this.booked_from = booked_from;
-	}
-	public StringProperty getBooked_to() {
-		return booked_to;
-	}
-	public void setBooked_to(StringProperty booked_to) {
-		this.booked_to = booked_to;
-	}
-	public StringProperty getRoom_number() {
-		return room_number;
-	}
-	public void setRoom_number(StringProperty room_number) {
-		this.room_number = room_number;
-	}
-	public StringProperty getBranch_id() {
-		return branch_id;
-	}
-	public void setBranch_id(StringProperty branch_id) {
-		this.branch_id = branch_id;
-	}
-	public StringProperty getStat() {
-		return stat;
-	}
-	public void setStat(StringProperty stat) {
-		this.stat = stat;
-	}
-	public StringProperty getCustomer_id() {
-		return customer_id;
-	}
-	public void setCustomer_id(StringProperty customer_id) {
-		this.customer_id = customer_id;
+	public void setEmp_id(StringProperty emp_id) {
+		this.emp_id = emp_id;
 	}
 	public StringProperty getFname() {
 		return fname;
@@ -79,49 +49,107 @@ public class Employee extends RecursiveTreeObject<Bookings>{
 	public void setLname(StringProperty lname) {
 		this.lname = lname;
 	}
-	Bookings(StringProperty a,StringProperty b,StringProperty c,StringProperty d,StringProperty e,StringProperty f,StringProperty g,StringProperty h,StringProperty i){
-		booking_id=a;
-		booked_from=b;
-		booked_to=c;
-		room_number=d;
-		branch_id=e;
-		stat=f;
-		customer_id=g;
-		fname=h;
-		lname=i;
+	public StringProperty getGender() {
+		return gender;
 	}
-	public static ObservableList<Bookings> getBookingsData(String fname,String lname,boolean booked){
+	public void setGender(StringProperty gender) {
+		this.gender = gender;
+	}
+	public StringProperty getPosition() {
+		return position;
+	}
+	public void setPosition(StringProperty position) {
+		this.position = position;
+	}
+	public StringProperty getJoined() {
+		return joined;
+	}
+	public void setJoined(StringProperty joined) {
+		this.joined = joined;
+	}
+	public StringProperty getReleased() {
+		return released;
+	}
+	public void setReleased(StringProperty released) {
+		this.released = released;
+	}
+	public DoubleProperty getSalary() {
+		return salary;
+	}
+	public void setSalary(DoubleProperty salary) {
+		this.salary = salary;
+	}
+	public StringProperty getAadhar_number() {
+		return aadhar_number;
+	}
+	public void setAadhar_number(StringProperty aadhar_number) {
+		this.aadhar_number = aadhar_number;
+	}
+	public StringProperty getBranch_id() {
+		return branch_id;
+	}
+	public void setBranch_id(StringProperty branch_id) {
+		this.branch_id = branch_id;
+	}
+	public StringProperty getPin() {
+		return pin;
+	}
+	public void setPin(StringProperty pin) {
+		this.pin = pin;
+	}
+	public StringProperty getClearance() {
+		return clearance;
+	}
+	public void setClearance(StringProperty clearance) {
+		this.clearance = clearance;
+	}
+	
+	Employee(StringProperty a,StringProperty b,StringProperty c,StringProperty d,StringProperty e,StringProperty f,StringProperty g,DoubleProperty h,StringProperty i,StringProperty j,StringProperty k,StringProperty l){
+		emp_id=a;
+		fname=b;
+		lname=c;
+		gender=d;
+		position=e;
+		joined=f;
+		released=g;
+		salary=h;
+		aadhar_number=i;
+		branch_id=j;
+		pin=k;
+		clearance=l;
+	}
+	public static ObservableList<Employee> getEmployeeData(String fname,String lname,boolean working){
 		try {
 			Connection con=dbConnect();
 			PreparedStatement ps1;
-			if(!booked) {
+			if(!working) {
 				if(fname==null && lname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer");
+					ps1=con.prepareStatement("select employee.emp_id,fname,lname,gender,position,joined,released,salary,aadhar_number,branch_id,pin,clearance from employee left outer join users on employee.emp_id=users.emp_id");
 				}else if(fname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where lname='"+lname+"'");
+					ps1=con.prepareStatement("select employee.emp_id,fname,lname,gender,position,joined,released,salary,aadhar_number,branch_id,pin,clearance from employee left outer join users on employee.emp_id=users.emp_id where lname='"+lname+"'");
 				}else if(lname==null) {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'");
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where fname='"+fname+"'");
 				}else {
-					ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"'");
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where fname='"+fname+"'and lname='"+lname+"'");
 				}
 			}else {
-					if(fname==null && lname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where stat='booked'");
-					}else if(fname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where lname='"+lname+"' and stat='booked'");
-					}else if(lname==null) {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"' and stat='booked'");
-					}else {
-						ps1=con.prepareStatement("select booking_id,booked_from,booked_to,room_num,branch_id,stat,customer_id,fname,lname from booking natural join customer where fname='"+fname+"'and lname='"+lname+"' and stat='booked'");
-					}
+				if(fname==null && lname==null) {
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where released is null");
+				}else if(fname==null) {
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where lname='"+lname+"' and released is null");
+				}else if(lname==null) {
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where fname='"+fname+"' and released is null");
+				}else {
+					ps1=con.prepareStatement("select * from employee left outer join users on employee.emp_id=users.emp_id where fname='"+fname+"'and lname='"+lname+"' and released is null");
+				}
 			}
 			ResultSet rs=ps1.executeQuery();
-			ObservableList<Bookings> bookings=FXCollections.observableArrayList();
+			ObservableList<Employee> employee=FXCollections.observableArrayList();
 			DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			while(rs.next()) {
-				bookings.add(new Bookings(new SimpleStringProperty(rs.getString(1)),new SimpleStringProperty(rs.getDate(2).toLocalDate().format(df)),new SimpleStringProperty(rs.getDate(3).toLocalDate().format(df)),new SimpleStringProperty(rs.getString(4)),new SimpleStringProperty(rs.getString(5)),new SimpleStringProperty(rs.getString(6)),new SimpleStringProperty(rs.getString(7)),new SimpleStringProperty(rs.getString(8)),new SimpleStringProperty(rs.getString(9))));
+				employee.add(new Employee(new SimpleStringProperty(rs.getString(1)),new SimpleStringProperty(rs.getString(2)),new SimpleStringProperty(rs.getString(3)),new SimpleStringProperty(rs.getString(4)),new SimpleStringProperty(rs.getString(5)),new SimpleStringProperty(rs.getDate(6).toLocalDate().format(df)),new SimpleStringProperty((rs.getDate(7)!=null)?rs.getDate(7).toLocalDate().format(df):" "),new SimpleDoubleProperty(rs.getDouble(8)),new SimpleStringProperty(rs.getString(9)),new SimpleStringProperty(rs.getString(10)),new SimpleStringProperty(rs.getString(11)),new SimpleStringProperty(rs.getString(12))));
 			}
-			return bookings;
+			return employee;
 			
 		}catch(Exception e){
 			System.out.println(e);

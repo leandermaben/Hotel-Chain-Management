@@ -1,4 +1,5 @@
 insert into branch values('NY101','Baker','New York',null,1234,'active');
+insert into employee values('2001','Albert','Einstein','M','tunneling predictor',current_date,current_date,1000000,'234','NY101');
 insert into food values('Chicken Steak',350,0,'y');
 insert into food values('Dragon Chicken',350,0,'y');
 insert into food values('Drums of Heaven',350,0,'y');
