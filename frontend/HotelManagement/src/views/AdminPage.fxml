@@ -5,7 +5,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,7 +33,7 @@
          <children>
             <JFXBadge fx:id="book">
                <children>
-                  <JFXButton fx:id="bookbtn" buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="75.0">
+                  <JFXButton buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="75.0">
                      <font>
                         <Font size="15.0" />
                      </font></JFXButton>
@@ -74,15 +73,27 @@
             </JFXBadge>
             <JFXBadge fx:id="allot" prefHeight="229.0" prefWidth="219.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="allotbtn" mnemonicParsing="false" onAction="#launchAllot" text="Button" translateY="75.0" />
+                  <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="75.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></JFXBadge>
             <JFXBadge fx:id="access" GridPane.columnIndex="3">
                <children>
-                  <Button fx:id="accessbtn" mnemonicParsing="false" onAction="#launchClearance" text="Button" translateY="75.0" />
+                  <JFXButton buttonType="RAISED" onAction="#launchAccess" text="Launch" textFill="WHITE" translateY="80.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></JFXBadge>
             <JFXBadge fx:id="hire" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="hirebtn" mnemonicParsing="false" onAction="#launchLogistics" text="Button" translateY="75.0" />
+                  <JFXButton buttonType="RAISED" onAction="#launchLogistics" text="Launch" textFill="WHITE" translateY="75.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></JFXBadge>
             <JFXBadge fx:id="notif" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <children>
@@ -94,22 +105,51 @@
                </children></JFXBadge>
             <JFXBadge fx:id="update" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="updatebtn" mnemonicParsing="false" text="Button" translateY="90.0" />
+                  <JFXButton buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="90.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></JFXBadge>
             <JFXBadge fx:id="search" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="searchbtn" mnemonicParsing="false" text="Button" translateY="95.0" />
+                  <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="95.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children></JFXBadge>
          </children>
       </GridPane>
-      <GridPane layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%);" AnchorPane.bottomAnchor="824.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
+      <GridPane hgap="20.0" layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%); -fx-padding: 5;" vgap="5.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="0.0" prefWidth="84.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="841.0" minWidth="10.0" prefWidth="502.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.0" minWidth="10.0" prefWidth="462.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+         <children>
+            <AnchorPane GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="name" contentDisplay="RIGHT" prefHeight="57.0" prefWidth="535.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Label fx:id="clock" alignment="CENTER" layoutX="84.0" layoutY="5.0" prefHeight="38.0" prefWidth="292.0" style="-fx-background-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" textFill="#76f516" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+         </GridPane>
    </children>
 </AnchorPane>

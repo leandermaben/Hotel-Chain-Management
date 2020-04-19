@@ -10,6 +10,11 @@ import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import utils.Header;
+import utils.State;
+
+import static utils.Connect.dbConnect;
 
 public class ClearanceController {
 
@@ -40,7 +45,24 @@ public class ClearanceController {
     @FXML
     private JFXListView<String> admin;
 
-    ObservableList<String> nemp;
+    private State state;
+    
+    private Header header;
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label clock;
+    
+    public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
+		this.header=new Header(state,name,clock);
+	}
+
+	ObservableList<String> nemp;
 	ObservableList<String> emp;
 	ObservableList<String> nsupervisor;
 	ObservableList<String> supervisor;
@@ -126,15 +148,9 @@ public class ClearanceController {
     void revokeSupervisor() {
 
     }
+    @FXML
+    void back(){
+    	header.back();
+    }
 
-    static Connection dbConnect() {
-    	Connection con=null;
-    	try {
-    		Class.forName("oracle.jdbc.driver.OracleDriver");  
-    		con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {e.printStackTrace();}
-    	return con;
-   }
-    
 }

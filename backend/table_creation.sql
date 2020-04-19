@@ -54,8 +54,10 @@ create table invoice(bill_id varchar(10) primary key,
                     price number(10,2), 
                     transaction_id varchar(10), 
                     customer_id varchar(10),
+                    branch_id varchar(10),
                     foreign key(customer_id) references customer(customer_id) ,
-                    foreign key(transaction_id) references stay(transaction_id));
+                    foreign key(transaction_id) references stay(transaction_id),
+                    foreign key(branch_id) references branch(branch_id));
 create table food(item varchar(100) primary key, 
                     price number(10,2), 
                     sold number(25),

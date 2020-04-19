@@ -12,8 +12,11 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.util.Callback;
+import utils.Header;
+import utils.State;
 import entityClass.Bookings;
 import entityClass.Employee;
 import entityClass.Food;
@@ -68,7 +71,27 @@ public class SearchController {
     @FXML
     private JFXTreeTableView<Food> foodTable;
 
+ private State state;
     
+    private Header header;
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label clock;
+    
+    public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
+		this.header=new Header(state,name,clock);
+	}
+	
+	 @FXML
+	 void back(){
+	    header.back();
+	  }
 
     @FXML
     void refreshAccount() {

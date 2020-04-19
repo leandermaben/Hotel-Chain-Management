@@ -16,6 +16,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import utils.Connect;
+import utils.State;
 
 public class HomeController {
 
@@ -52,17 +54,18 @@ public class HomeController {
     @FXML
     private JFXPasswordField conpass;
     
-    private Stage stage;
+    private Stage loginWindow;
     
-    public void setStage(Stage st) {
-    	stage=st;
+    public void setLoginWindow(Stage st) {
+    	loginWindow=st;
     }
     @FXML
     void login() {
+    	Stage stage=new Stage();
     	String id=empid.getText();
     	String ps=spass.getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement p=con.prepareStatement("select pin,clearance from users where emp_id='"+id+"'");
     		ResultSet rs=p.executeQuery();
     		if(!rs.next()) {
@@ -72,12 +75,15 @@ public class HomeController {
     				throw new Exception("Invalid Password");
     			}else {
     				if(rs.getString(2).equals("admin")) {
-    					FXMLLoader fx=new FXMLLoader(getClass().getResource("AdminPage.fxml"));
+    					FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
     					AnchorPane root=(AnchorPane)fx.load();
     					Scene scene=new Scene(root,1321,881);
     					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-    					((AdminPageController)fx.getController()).setStage(stage);
+    					loginWindow.close();
+    					State state=new State(stage,id);
+    					((AdminPageController)fx.getController()).setState(state);
     					stage.setScene(scene);
+    					stage.show();
     				}
     			}
     		}
@@ -89,8 +95,9 @@ public class HomeController {
     
     @FXML
     void setup() {
+    	Stage stage=new Stage();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		String fn=fname.getText();
     		String ln=lname.getText();
     		String pn=phone.getText();
@@ -112,9 +119,11 @@ public class HomeController {
 				AnchorPane root=(AnchorPane)fx.load();
 				Scene scene=new Scene(root,1321,881);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				((AdminPageController)fx.getController()).setStage(stage);
-				System.out.println("Here");
+				loginWindow.close();
+				State state=new State(stage,"1000",fn,ln,"admin");
+				((AdminPageController)fx.getController()).setState(state);
 				stage.setScene(scene);
+				stage.show();
     		}
     	}catch(Exception e) {
     		e.printStackTrace();
@@ -134,15 +143,5 @@ public class HomeController {
     	sign.setOpacity(1);
     	sign.setVisible(true);
     }
-    
-    static Connection dbConnect() {
-    	Connection con=null;
-    	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	    con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {e.printStackTrace();}
-    	return con;
-   }
 
 }

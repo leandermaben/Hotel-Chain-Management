@@ -13,6 +13,9 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
+import utils.Connect;
+import utils.Header;
+import utils.State;
 
 public class LogisticsController {
 
@@ -127,6 +130,20 @@ public class LogisticsController {
     @FXML
     private JFXTextField delbr;
     
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label clock;
+    
+    private Header header;
+    private State state;
+    
+    public void setState(State st) {
+    	System.out.println("Setting state");
+    	state=st;
+    	header=new Header(state,name,clock);
+    }
 
     @FXML
     void tabulate() {
@@ -138,7 +155,7 @@ public class LogisticsController {
     	double oth=Double.parseDouble(tbot.getText());
     	try {
     		java.sql.Date date=new java.sql.Date(sdf.parse(tbdt.getValue().toString()).getTime());
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		ps=con.prepareStatement("insert into accounts values(?,'"+branch+"',"+kitch+","+tax+","+bill+","+oth+")");
     		ps.setDate(1, date);
@@ -154,7 +171,7 @@ public class LogisticsController {
     	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
     	try {
     		java.sql.Date date=new java.sql.Date(sdf.parse(deldt.getValue().toString()).getTime());
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		ps=con.prepareStatement("delete from accounts where branch_id='"+branch+"' and log_date like ?");
     		ps.setDate(1, date);
@@ -171,7 +188,7 @@ public class LogisticsController {
     	String street=brst.getText();
     	String choice=((JFXRadioButton)adr.getSelectedToggle()).getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		if(choice.equals("Add"))
     			ps=con.prepareStatement("insert into branch values('"+branch+"','"+street+"','"+city+"',null,null,'active')");
@@ -189,7 +206,7 @@ public class LogisticsController {
     	String manag=brgm.getText();
     	String phone=brmp.getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		ps=con.prepareStatement("update branch set gm_id='"+manag+"',phone='"+phone+"' where branch_id='"+branch+"'");
     		ps.execute();
@@ -204,7 +221,7 @@ public class LogisticsController {
     	double cost=Double.parseDouble(fdpr.getText());
     	String choice=((JFXRadioButton)adr.getSelectedToggle()).getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		if(choice.equals("Add"))
     			ps=con.prepareStatement("insert into food values('"+item+"',"+cost+",0,'y')");
@@ -224,7 +241,7 @@ public class LogisticsController {
     	double cost=Double.parseDouble(rmbc.getText());
     	String choice=((JFXRadioButton)adr.getSelectedToggle()).getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
     		if(choice.equals("Add"))
     			ps=con.prepareStatement("insert into room values('"+branch+"','"+room+"','"+floor+"','vacant','y',"+cost+")");
@@ -247,7 +264,7 @@ public class LogisticsController {
     	String ad=epad.getText();
     	String gender=((JFXRadioButton)adr.getSelectedToggle()).getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps=con.prepareStatement("insert into employee values('"+id+"','"+fname+"','"+lname+"','"+gender.charAt(0)+"','"+pos+"',current_date,null,'"+salary+"','"+ad+"','"+branch+"')");
     		ps.execute();
     	}catch(Exception e) {
@@ -259,7 +276,7 @@ public class LogisticsController {
     void showEmployee() {
     	String id=epid.getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps=con.prepareStatement("select * from employee where emp_id='"+id+"'");
     		ResultSet rs=ps.executeQuery();
     		rs.next();
@@ -273,7 +290,7 @@ public class LogisticsController {
     void release(){
     	String id=epid.getText();
     	try {
-    		Connection con=dbConnect();
+    		Connection con=Connect.dbConnect();
     		PreparedStatement ps=con.prepareStatement("update employee set released=current_date where emp_id='"+id+"'");
     		ps.execute();
     	}catch(Exception e) {
@@ -282,7 +299,7 @@ public class LogisticsController {
     }
     String generateEmployeeId() {
     	try {
-    		Connection conn=dbConnect();
+    		Connection conn=Connect.dbConnect();
     		PreparedStatement ps4=conn.prepareStatement("select max(emp_id) from employee");
 	     	ResultSet rs4=ps4.executeQuery();
 	     	rs4.next();
@@ -299,13 +316,21 @@ public class LogisticsController {
     	}
     }
     
-    static Connection dbConnect() {
-    	Connection con=null;
+    @FXML
+    void back(){
+    	header.back();
+    }
+    String getCustomerId(String pass){
     	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	    con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {e.printStackTrace();}
-    	return con;
-   }
+    		Connection conn=Connect.dbConnect();
+        	PreparedStatement ps1=conn.prepareStatement("select customer_id from customer where passport_number='"+pass+"' or aadhar_number='"+pass+"'");
+        	ResultSet rs=ps1.executeQuery();
+        	rs.next();
+        	return rs.getString(1);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+    }
+   
 }
