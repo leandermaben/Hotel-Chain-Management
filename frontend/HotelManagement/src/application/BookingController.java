@@ -40,7 +40,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Date;
-
+import static utils.Connect.dbConnect;
 public class BookingController {
 	 @FXML
 	    private JFXTextField cifname;
@@ -500,7 +500,7 @@ void initializeRoom() {
     @FXML
     void addCustomer() {
     	try {
-   	     	Connection conn=Connect.dbConnect();
+   	     	Connection conn=dbConnect();
 	     	String customerId=generateCustomerId();
    	     	String fname=cifname.getText().toString();
    	     	String lname=cilname.getText().toString();
@@ -520,7 +520,7 @@ void initializeRoom() {
     @FXML
     void addPhone() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	String pass=ciapt.getText();
         	String phone=ciapn.getText();
         	String id=getCustomerId(pass);
@@ -534,7 +534,7 @@ void initializeRoom() {
     @FXML
     void book() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	String pass=bkpn.getText();
         	String br=bkbr_id.getText();
         	String rm=bkrm.getText();
@@ -572,7 +572,7 @@ void initializeRoom() {
     @FXML
     void updateBook() {
     	try {
-    		Connection con=Connect.dbConnect();
+    		Connection con=dbConnect();
     		String bookId=bkupid.getText();
         	JFXRadioButton opt=(JFXRadioButton)bookUp.getSelectedToggle();
         	PreparedStatement ps;    	
@@ -610,7 +610,7 @@ void initializeRoom() {
     		String pass=fbpt.getText();
     		String rmno=rm.getText();
     		boolean st=stay.isSelected();
-    		Connection con=Connect.dbConnect();
+    		Connection con=dbConnect();
     		PreparedStatement ps1=con.prepareStatement("select customer_id from customer where passport_number='"+pass+"' or aadhar_number='"+pass+"'");
         	ResultSet rs=ps1.executeQuery();
         	rs.next();
@@ -683,7 +683,7 @@ void initializeRoom() {
     	ordered.setText("");
     	ObservableList<String> items=FXCollections.observableArrayList();
     	try {
-    		Connection con=Connect.dbConnect();
+    		Connection con=dbConnect();
     		PreparedStatement ps=con.prepareStatement("select * from food");
     		ResultSet rs=ps.executeQuery();
     		while(rs.next()) {
@@ -699,7 +699,7 @@ void initializeRoom() {
     @FXML
     void faddCustomer() {
     	try {
-   	     	Connection conn=Connect.dbConnect();
+   	     	Connection conn=dbConnect();
 	   	     PreparedStatement ps4=conn.prepareStatement("select max(customer_id) from customer");
 	     	ResultSet rs4=ps4.executeQuery();
 	     	rs4.next();
@@ -728,7 +728,7 @@ void initializeRoom() {
     @FXML
     void faddPhone() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	String pass=fciapt.getText();
         	String phone=fciapn.getText();
         	PreparedStatement ps1=conn.prepareStatement("select customer_id from customer where passport_number='"+pass+"' or aadhar_number='"+pass+"'");
@@ -747,7 +747,7 @@ void initializeRoom() {
     @FXML
     void ckinAddPhone() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	String pass=ckinapt.getText();
         	String phone=ckinapn.getText();
         	PreparedStatement ps1=conn.prepareStatement("select customer_id from customer where passport_number='"+pass+"' or aadhar_number='"+pass+"'");
@@ -764,7 +764,7 @@ void initializeRoom() {
     @FXML
     void ckinAddCustomer() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
 	     	String customerId=generateCustomerId();
    	     	String fname=ckinfname.getText().toString();
    	     	String lname=ckinlname.getText().toString();
@@ -786,7 +786,7 @@ void initializeRoom() {
     @FXML
     void checkin() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	String pass=ackinpt.getText();
         	String branch=ckinbr.getText();
         	String id=getCustomerId(pass);
@@ -827,7 +827,7 @@ void initializeRoom() {
     		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
     		roomList.setItems(null);
     		System.out.println();
-    		Connection con = Connect.dbConnect();
+    		Connection con = dbConnect();
     		boolean flag=false;
     		String rmNum;
     		double cost;
@@ -864,7 +864,7 @@ void initializeRoom() {
     @FXML
     void transaction() {
     	try {
-    		Connection con=Connect.dbConnect();
+    		Connection con=dbConnect();
     		String branch=ckotbr.getText();
         	String room=ckotrm.getText();
         	double basic_cost;
@@ -925,7 +925,7 @@ void initializeRoom() {
     @FXML
     void showDetails(){
     	try {
-    		Connection con=Connect.dbConnect();
+    		Connection con=dbConnect();
     		String branch=ckotbr.getText();
         	String room=ckotrm.getText();
         	double basic_cost;
@@ -979,7 +979,7 @@ void initializeRoom() {
     }
     String getCustomerId(String pass){
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
         	PreparedStatement ps1=conn.prepareStatement("select customer_id from customer where passport_number='"+pass+"' or aadhar_number='"+pass+"'");
         	ResultSet rs=ps1.executeQuery();
         	rs.next();
@@ -991,7 +991,7 @@ void initializeRoom() {
     }
     String generateCustomerId() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
     		PreparedStatement ps4=conn.prepareStatement("select max(customer_id) from customer");
 	     	ResultSet rs4=ps4.executeQuery();
 	     	rs4.next();
@@ -1009,7 +1009,7 @@ void initializeRoom() {
     }
     String generateTransactionId() {
     	try {
-    		Connection conn=Connect.dbConnect();
+    		Connection conn=dbConnect();
     		PreparedStatement ps4=conn.prepareStatement("select max(transaction_id) from stay");
 	     	ResultSet rs4=ps4.executeQuery();
 	     	rs4.next();

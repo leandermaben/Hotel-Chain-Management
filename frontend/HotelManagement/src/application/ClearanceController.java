@@ -70,7 +70,12 @@ public class ClearanceController {
 	ObservableList<String> ad;
 	
     
-    public void initialize() {
+	
+	public void initialize() {
+		refreshLists();
+	}
+	
+    public void refreshLists() {
     	nemp=FXCollections.observableArrayList();
     	emp=FXCollections.observableArrayList();
     	nsupervisor=FXCollections.observableArrayList();
@@ -121,32 +126,80 @@ public class ClearanceController {
     }
     @FXML
     void grantAdmin() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:nadmin.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("update users set clearance='admin' where emp_id='"+em.split(" ")[0]+"'").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
 
     @FXML
     void grantEmployee() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:nacemp.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("insert into users values('"+em.split(" ")[0]+"','pass','employee')").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
 
     @FXML
     void grantSupervisor() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:nsup.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("update users set clearance='supervisor' where emp_id='"+em.split(" ")[0]+"'").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
 
     @FXML
     void revokeAdmin() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:admin.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("update users set clearance='employee' where emp_id='"+em.split(" ")[0]+"'").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
 
     @FXML
     void revokeEmployee() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:acemp.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("delete from users where emp_id='"+em.split(" ")[0]+"'").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
 
     @FXML
     void revokeSupervisor() {
-
+    	try {
+    		Connection con=dbConnect();
+    		for(String em:sup.getSelectionModel().getSelectedItems()) {
+    			con.prepareStatement("update users set clearance='employee' where emp_id='"+em.split(" ")[0]+"'").execute();
+    		}
+    		refreshLists();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}	
     }
     @FXML
     void back(){
