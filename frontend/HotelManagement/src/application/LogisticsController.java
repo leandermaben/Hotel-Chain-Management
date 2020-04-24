@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import utils.Connect;
-import utils.Header;
 import utils.State;
 
 public class LogisticsController {
@@ -131,18 +130,18 @@ public class LogisticsController {
     private JFXTextField delbr;
     
     @FXML
-    private Label name;
+    private HeaderController headerController;
 
     @FXML
-    private Label clock;
+    private SideBarController sideBarController;
     
-    private Header header;
     private State state;
     
     public void setState(State st) {
     	System.out.println("Setting state");
     	state=st;
-    	header=new Header(state,name,clock);
+    	headerController.setState(state);
+    	sideBarController.setState(state);
     }
 
     @FXML
@@ -316,10 +315,7 @@ public class LogisticsController {
     	}
     }
     
-    @FXML
-    void back(){
-    	header.back();
-    }
+    
     String getCustomerId(String pass){
     	try {
     		Connection conn=Connect.dbConnect();

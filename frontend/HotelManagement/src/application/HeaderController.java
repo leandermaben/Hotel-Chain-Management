@@ -1,13 +1,4 @@
-package utils;
-
-/*
- * TODO
- * Create state class 
- * Move all state maintainance out of header
- * 
- * 
- */
-
+package application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,20 +9,26 @@ import java.time.format.DateTimeFormatter;
 import application.AdminPageController;
 import application.BookingController;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import utils.State;
 
-public class Header {
+public class HeaderController {
 	State state;
+	
+	@FXML
 	Label name;
+	@FXML
 	Label clock;
-	public Header(State s,Label n,Label c){
-		state=s;
-		name=n;
-		clock=c;
+	public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
 		setHeader();
 	}
 	void setHeader() {

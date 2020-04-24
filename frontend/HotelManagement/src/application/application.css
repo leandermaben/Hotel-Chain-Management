@@ -25,7 +25,7 @@
 #search{
 	-fx-background-color:  linear-gradient(to top right, rgba(185,139,255,1) 0%, rgba(102,0,255,1) 100%);
 }
-#update{
+#notify{
 	-fx-background-color:  linear-gradient(to top right, rgba(255,251,108,1) 0%, rgba(255,201,0,1) 100%);
 }
 #profits{
@@ -57,7 +57,7 @@
 #searchbtn{
 	-fx-background-color:  #9000ff;
 }
-#updatebtn{
+#notifybtn{
 	-fx-background-color:  #ffd100;
 }
 .infoArea{
@@ -77,6 +77,8 @@
 #addAdmin{
 	-fx-background-color:  linear-gradient(to top left, #fffb6c 0%, #d7a711 100%);
 }
-
+.sidebar-button{
+	-fx-border-color:transparent;
+}
 
 

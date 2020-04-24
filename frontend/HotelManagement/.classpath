@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="C:/Users/Leander/Desktop/eclipse/eclipse/ojdbc7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Leander/Desktop/Hotel-Chain-Management/jfoenix-8.0.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leander/Desktop/Hotel-Chain-Management/fontawesomefx-8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
