@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import utils.Header;
+import utils.SideBar;
 import utils.State;
 
 public class AdminPageController {
@@ -59,17 +59,16 @@ public class AdminPageController {
     private Button searchbtn;
     
     @FXML
-    private Label name;
-
+    private HeaderController headerController;
     @FXML
-    private Label clock;
+    private SideBarController sideBarController;
     
-    private Header header;
     private State state;
     
     public void setState(State st) {
     	state=st;
-    	header=new Header(state,name,clock);
+    	headerController.setState(state);
+    	sideBarController.setState(state);
     }
     @FXML
     void launchAccess() {
@@ -138,6 +137,24 @@ public class AdminPageController {
     		e.printStackTrace();
     	}
     }
+
+    @FXML
+    void notifyByAdmin() {
+    	try {
+    		FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Logistics.fxml"));
+    		AnchorPane root=(AnchorPane)fx.load();
+    		Scene scene=new Scene(root,1321,881);
+    		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    		((LogisticsController)fx.getController()).setState(state);
+    		state.getStage().setScene(scene);
+    	}
+    	catch(Exception e) 
+    	{
+    		e.printStackTrace();
+    	}
+    }
+    
+    
 
 }
 

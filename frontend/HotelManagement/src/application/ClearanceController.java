@@ -11,7 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import utils.Header;
 import utils.State;
 
 import static utils.Connect.dbConnect;
@@ -45,21 +44,22 @@ public class ClearanceController {
     @FXML
     private JFXListView<String> admin;
 
+    @FXML
+    private HeaderController headerController;
+    
+    @FXML
+    private SideBarController sideBarController;
+    
     private State state;
     
-    private Header header;
-    @FXML
-    private Label name;
-
-    @FXML
-    private Label clock;
     
     public State getState() {
 		return state;
 	}
 	public void setState(State state) {
 		this.state = state;
-		this.header=new Header(state,name,clock);
+		headerController.setState(state);
+		sideBarController.setState(state);
 	}
 
 	ObservableList<String> nemp;
@@ -200,10 +200,6 @@ public class ClearanceController {
     	}catch(Exception e) {
     		e.printStackTrace();
     	}	
-    }
-    @FXML
-    void back(){
-    	header.back();
     }
 
 }

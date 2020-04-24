@@ -22,7 +22,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import utils.Connect;
-import utils.Header;
 import utils.State;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
@@ -273,10 +272,10 @@ public class BookingController {
 	    private JFXDatePicker ckinto;
 	    
 	    @FXML
-	    private Label name;
-
+	    private HeaderController headerController;
+	    
 	    @FXML
-	    private Label clock;
+	    private SideBarController sideBarController;
 	    
 	    HashMap<String,Double> h;
 	    
@@ -286,7 +285,7 @@ public class BookingController {
 	    
 	    HashMap<String,Integer> o;
 	    private State state;
-	    private Header header;
+	    
 
 	    
 	public State getState() {
@@ -295,7 +294,8 @@ public class BookingController {
 	
 	public void setState(State state) {
 				this.state = state;
-				header=new Header(state,name,clock);
+				headerController.setState(state);
+				sideBarController.setState(state);
 		}
 
 //Booking Table
@@ -972,10 +972,6 @@ void initializeRoom() {
     	}catch(Exception e) {
     		e.printStackTrace();
     	}   	
-    }
-    @FXML
-    void back(){
-    	header.back();
     }
     String getCustomerId(String pass){
     	try {

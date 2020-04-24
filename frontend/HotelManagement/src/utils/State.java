@@ -34,7 +34,7 @@ public class State {
 		this.emp_id=emp_id;
 		try {
 			Connection con=Connect.dbConnect();
-			PreparedStatement ps1=con.prepareStatement("select fname,lname from employee");
+			PreparedStatement ps1=con.prepareStatement("select fname,lname from employee where emp_id='"+emp_id+"'");
 			ResultSet rs=ps1.executeQuery();
 			rs.next();
 			empName=rs.getString(1)+" "+rs.getString(2);

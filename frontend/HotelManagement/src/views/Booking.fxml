@@ -26,46 +26,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookingController">
    <children>
-    <VBox layoutX="8.0" layoutY="252.0" prefHeight="881.0" prefWidth="252.0" style="-fx-background-color: #000428;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-    <GridPane hgap="20.0" layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%); -fx-padding: 5;" vgap="5.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <columnConstraints>
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="0.0" prefWidth="84.0" />
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="841.0" minWidth="10.0" prefWidth="502.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.0" minWidth="10.0" prefWidth="462.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
-         <children>
-            <AnchorPane GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="name" contentDisplay="RIGHT" prefHeight="57.0" prefWidth="535.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <JFXButton onAction="#back" prefHeight="65.0" prefWidth="74.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@backIcon%20(2).png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <Label fx:id="clock" alignment="CENTER" layoutX="84.0" layoutY="5.0" prefHeight="38.0" prefWidth="292.0" style="-fx-background-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" textFill="#76f516" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
-         </GridPane>
+   	<fx:include fx:id="header" source="Header.fxml" />
+   	<fx:include fx:id="sideBar" source="SideBar.fxml" />
       <JFXTabPane layoutX="252.0" layoutY="56.0" prefHeight="645.0" prefWidth="1028.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
          <tabs>
             <Tab text="Book">

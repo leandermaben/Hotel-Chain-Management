@@ -2,22 +2,24 @@
 
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXClippedPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPageController">
    <children>
-      <VBox layoutX="8.0" layoutY="252.0" prefHeight="881.0" prefWidth="252.0" style="-fx-background-color: #000428;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   	<fx:include fx:id="header" source="Header.fxml" />
+      <fx:include fx:id="sideBar" source="SideBar.fxml" />
       <GridPane hgap="40.0" layoutX="252.0" layoutY="65.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: F3F3F3; -fx-padding: 10;" vgap="40.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="65.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="219.0" />
@@ -26,9 +28,9 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="794.0" minWidth="10.0" prefWidth="230.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="214.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="226.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="231.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <JFXBadge fx:id="book">
@@ -37,11 +39,6 @@
                      <font>
                         <Font size="15.0" />
                      </font></JFXButton>
-                  <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" translateX="60.0" translateY="-10.0">
-                     <image>
-                        <Image url="@book.png" />
-                     </image>
-                  </ImageView>
                   <Label text="Booking" textFill="WHITE" translateX="-40.0" translateY="-50.0">
                      <font>
                         <Font size="24.0" />
@@ -52,9 +49,10 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label text="Check In" textFill="WHITE" translateX="-40.0" translateY="30.0">
+                  <FontAwesomeIconView glyphName="BOOK" scaleX="5.0" scaleY="5.0" translateX="55.0" />
+                  <Label text="Booking" textFill="WHITE" translateX="-40.0" translateY="30.0">
                      <font>
-                        <Font size="22.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children>
@@ -86,6 +84,17 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
+                  <Label text="Access" textFill="WHITE" translateX="-40.0" translateY="-25.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Control" textFill="WHITE" translateX="-40.0" translateY="25.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="KEY" scaleX="5.0" scaleY="5.0" translateX="55.0" wrappingWidth="14.800000190734863" />
                </children></JFXBadge>
             <JFXBadge fx:id="hire" GridPane.columnIndex="2">
                <children>
@@ -94,6 +103,12 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
+                  <Label text="Logistics" textFill="WHITE" translateX="-40.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="TRUCK" scaleX="5.0" scaleY="5.0" translateX="55.0" wrappingWidth="14.800000190734863" />
                </children></JFXBadge>
             <JFXBadge fx:id="notif" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <children>
@@ -103,53 +118,33 @@
                      </font>
                   </Label>
                </children></JFXBadge>
-            <JFXBadge fx:id="update" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <JFXBadge fx:id="notify" style="-fx-padding: 10;" styleClass="notify" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="90.0">
+                  <JFXButton fx:id="notifybtn" onAction="#notifyByAdmin" prefHeight="33.0" prefWidth="83.0" style="-fx-border-radius: 5;" text="Send" translateY="90.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
+                  <JFXCheckBox text="Supervisor" translateX="-50.0" translateY="-80.0" unCheckedColor="#323232" />
+                  <JFXCheckBox text="Employee" translateX="50.0" translateY="-80.0" />
+                  <JFXTextArea labelFloat="true" maxHeight="100.0" prefHeight="130.0" prefWidth="228.0" promptText="Notify" style="-fx-background-color: white;" />
                </children></JFXBadge>
-            <JFXBadge fx:id="search" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <JFXBadge fx:id="search" maxHeight="400.0" prefHeight="207.0" prefWidth="230.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="95.0">
+                  <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="85.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
+                  <Label text="Search" textFill="WHITE" translateX="-40.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="SEARCH" scaleX="5.0" scaleY="5.0" translateX="55.0" wrappingWidth="14.800000190734863" />
                </children></JFXBadge>
          </children>
       </GridPane>
-      <GridPane hgap="20.0" layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%); -fx-padding: 5;" vgap="5.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <columnConstraints>
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="0.0" prefWidth="84.0" />
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="841.0" minWidth="10.0" prefWidth="502.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="498.0" minWidth="10.0" prefWidth="462.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
-         <children>
-            <AnchorPane GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="name" contentDisplay="RIGHT" prefHeight="57.0" prefWidth="535.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <Label fx:id="clock" alignment="CENTER" layoutX="84.0" layoutY="5.0" prefHeight="38.0" prefWidth="292.0" style="-fx-background-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" textFill="#76f516" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
-         </GridPane>
+      <JFXClippedPane />
    </children>
 </AnchorPane>
