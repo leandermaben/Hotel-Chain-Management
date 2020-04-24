@@ -17,17 +17,12 @@ public class Main extends Application {
 			Scene scene = new Scene(root,994,657);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			((HomeController)fx.getController()).setLoginWindow(primaryStage);
-			primaryStage.initStyle(StageStyle.DECORATED);
-			passStage(primaryStage);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	void passStage(Stage window) {
-		
 	}
 	public static void main(String[] args) {
 		launch(args);

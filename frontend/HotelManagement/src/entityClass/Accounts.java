@@ -14,7 +14,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import static utils.Connect.dbConnect;
 public class Accounts extends RecursiveTreeObject<Accounts>{
 
 	private StringProperty log_date;
@@ -94,8 +94,8 @@ public class Accounts extends RecursiveTreeObject<Accounts>{
 	public void setProfit(DoubleProperty profit) {
 		this.profit = profit;
 	}
-	/*
-	public static ObservableList<Accounts> getAccountsData(String branch){
+
+	/*public static ObservableList<Accounts> getAccountsData(String branch){
 		try {
 			Connection con=dbConnect();
 			PreparedStatement ps1;
@@ -120,18 +120,8 @@ public class Accounts extends RecursiveTreeObject<Accounts>{
 	/*
 	 * with stayRev(log_date,branch_id,amount1) as (select check_out,branch_id,sum((check_out-check_in)*basic_cost+extra_cost-discount) from stay natural join room group by check_out,branch_id),
 foodRev(log_date,branch_id,amount2) as (select issued,branch_id,sum(price) from invoice group by issued,branch_id),
-initAccount(log_date,branch_id,kitchen,taxes,bills,other,revenue) as (select accounts.log_date,accounts.branch_id,kitchen,taxes,bills,other,amount1+amount2 from accounts full outer join foodRev on accounts.log_date=foodRev.log_date and accounts.branch_id=foodRev.branch_id full outer join stayRev on stayRev.log_date=foodRev.log and stay_rev.branch_id = foodRev.branch_id)
+initAccount(log_date,branch_id,kitchen,taxes,bills,other,revenue) as (select accounts.log_date,accounts.branch_id,kitchen,taxes,bills,other,amount1+amount2 from accounts full outer join foodRev on accounts.log_date=foodRev.log_date and accounts.branch_id=foodRev.branch_id full outer join stayRev on stayRev.log_date=foodRev.log_date and stayRev.branch_id = foodRev.branch_id)
 select log_date,t.branch_id,kitchen,taxes,bills,other,wages,revenue,revenue-wages from initAccount t,lateral(select sum(salary)/30 as wages from employee where joined<=log_date and (released is null or released>=log_date) and employee.branch_id=t.branch_id)
-/
+*/
 
-	 */
-	static Connection dbConnect() {
-    	Connection con=null;
-    	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	    con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {System.out.print(e);}
-    	return con;
-   }
 }

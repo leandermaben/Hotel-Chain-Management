@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -55,9 +56,18 @@ public class HomeController {
     private JFXPasswordField conpass;
     
     private Stage loginWindow;
+
+	private double xOffset;
+
+	private double yOffset;
     
     public void setLoginWindow(Stage st) {
     	loginWindow=st;
+    }
+    @FXML
+    public void initialize() {
+    	set.setVisible(false);
+    	sign.setVisible(true);
     }
     @FXML
     void login() {
@@ -138,10 +148,27 @@ public class HomeController {
 
     @FXML
     void signinDisp() {
-    	System.out.println("Here");
     	set.setVisible(false);
-    	sign.setOpacity(1);
     	sign.setVisible(true);
     }
+    
+    @FXML
+    void move(MouseEvent event) {
+	 loginWindow.setX(event.getScreenX() - xOffset);
+     loginWindow.setY(event.getScreenY() - yOffset);
+    }
+
+    @FXML
+    void register(MouseEvent event) {
+    	 xOffset = event.getSceneX();
+         yOffset = event.getSceneY();
+    }
+    
+    @FXML
+    void close() {
+    	loginWindow.close();
+    	System.exit(0);
+    }
+
 
 }

@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utils.State;
@@ -32,6 +33,10 @@ public class ChangePasswordController {
 		}
 
 		private Stage stage;
+
+		private double xOffset;
+
+		private double yOffset;
 	    public Stage getStage() {
 			return stage;
 		}
@@ -66,6 +71,17 @@ public class ChangePasswordController {
 	    		mess.setText("Passwords Do not Match");
 	    	}
 	    }
+	    @FXML
+	    void move(MouseEvent event) {
+	    	stage.setX(event.getScreenX() - xOffset);
+	     stage.setY(event.getScreenY() - yOffset);
+	    }
+
+	    @FXML
+	    void register(MouseEvent event) {
+	    	 xOffset = event.getSceneX();
+	         yOffset = event.getSceneY();
+	    }
 	    
 }
 
@@ -78,7 +94,7 @@ class CloseWindow implements Runnable{
 	}
 	public void run() {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2500);
 		}catch(InterruptedException i) {
 			i.printStackTrace();
 		}

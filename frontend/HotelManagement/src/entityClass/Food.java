@@ -18,6 +18,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Callback;
+import static utils.Connect.dbConnect;
 
 public class Food extends RecursiveTreeObject<Food>{
 	private StringProperty item;
@@ -74,13 +75,4 @@ public class Food extends RecursiveTreeObject<Food>{
 			return null;
 		}
 	}
-	static Connection dbConnect() {
-    	Connection con=null;
-    	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	    con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {System.out.print(e);}
-    	return con;
-   }
 }

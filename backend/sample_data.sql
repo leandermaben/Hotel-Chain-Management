@@ -15,3 +15,5 @@ insert into invoice values('1000',current_date,1000,null,'1000','NY101');
 insert into invoice values('1001',current_date,1500,null,'1000','NY101');
 insert into invoice values('1002',current_date,1200,null,'1000','NY101');
 insert into accounts values(current_date,'NY101',200,100,1000,500);
+insert into stay values('1000','1000',current_date,to_date("25/4/2020","DD-MM-YYYY"),'305','NY101',500,100);
+insert into stay values('1001','1000',current_date,current_date,'306','NY101',1000,100);

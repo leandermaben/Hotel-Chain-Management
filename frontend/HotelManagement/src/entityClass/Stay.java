@@ -15,6 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import static utils.Connect.dbConnect;
 
 public class Stay extends RecursiveTreeObject<Stay>{
 	private StringProperty transaction_id;
@@ -144,13 +145,4 @@ public class Stay extends RecursiveTreeObject<Stay>{
 	public void setTotal(DoubleProperty total) {
 		this.total = total;
 	}
-	static Connection dbConnect() {
-    	Connection con=null;
-    	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	    con=DriverManager.getConnection(  "jdbc:oracle:thin:@localhost:1521:XE","system","Leroyale7"); 
-        }
-    	catch(Exception e) {System.out.print(e);}
-    	return con;
-   }
 }

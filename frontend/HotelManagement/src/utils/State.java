@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import javafx.stage.Stage;
 
 public class State {
-	private Stage stage;
-	private String emp_id;
-	private String empName;
-	private String clearance;
+	private Stage stage=null;
+	private String emp_id=null;
+	private String empName=null;
+	private String clearance=null;
 	public Stage getStage() {
 		return stage;
 	}
@@ -52,6 +52,5 @@ public class State {
 		this.clearance=clearance;
 		empName=fname+" "+lname;
 	}
-	
 	
 }

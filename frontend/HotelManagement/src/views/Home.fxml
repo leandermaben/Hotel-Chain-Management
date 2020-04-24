@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="994.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#move" onMousePressed="#register" prefHeight="657.0" prefWidth="994.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -31,9 +31,9 @@
             <Image url="@paolo-nicolello-2gOxKj594nM-unsplash.jpg" />
          </image>
       </ImageView>
-      <StackPane layoutX="461.0" layoutY="25.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="25.0">
+      <StackPane layoutX="443.0" layoutY="25.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <children>
-            <GridPane fx:id="sign" prefHeight="559.0" prefWidth="501.0" style="-fx-opacity: 0;">
+            <GridPane fx:id="sign" prefHeight="559.0" prefWidth="501.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                </columnConstraints>
@@ -151,5 +151,6 @@
             </GridPane>
          </children>
       </StackPane>
+      <JFXButton layoutX="951.0" layoutY="2.0" onAction="#close" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: darkred; -fx-border-radius: 0; -fx-background-radius: 0; -fx-border-color: transparent;" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
