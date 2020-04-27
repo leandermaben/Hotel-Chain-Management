@@ -156,7 +156,7 @@ public class LogisticsController {
     		java.sql.Date date=new java.sql.Date(sdf.parse(tbdt.getValue().toString()).getTime());
     		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
-    		ps=con.prepareStatement("insert into accounts values(?,'"+branch+"',"+kitch+","+tax+","+bill+","+oth+")");
+    		ps=con.prepareStatement("insert into accounts(log_date,branch_id,kitchen,taxes,bills,other) values(?,'"+branch+"',"+kitch+","+tax+","+bill+","+oth+")");
     		ps.setDate(1, date);
     		ps.execute();
     	}catch(Exception e) {
@@ -172,7 +172,7 @@ public class LogisticsController {
     		java.sql.Date date=new java.sql.Date(sdf.parse(deldt.getValue().toString()).getTime());
     		Connection con=Connect.dbConnect();
     		PreparedStatement ps;
-    		ps=con.prepareStatement("delete from accounts where branch_id='"+branch+"' and log_date like ?");
+    		ps=con.prepareStatement("update accounts set kitchen=0,taxes=0,bills=0,others=0 where branch_id='"+branch+"' and log_date like ?");
     		ps.setDate(1, date);
     		ps.execute();
     	}catch(Exception e) {

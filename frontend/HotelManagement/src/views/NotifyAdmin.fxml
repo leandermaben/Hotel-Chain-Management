@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#move" onMousePressed="#register" prefHeight="267.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NotifyAdminController">
+   <children>
+      <JFXButton layoutX="56.0" layoutY="219.0" onAction="#submit" prefHeight="25.0" prefWidth="66.0" styleClass="sub_button" text="Submit" />
+      <JFXButton layoutX="192.0" layoutY="219.0" onAction="#quit" prefHeight="25.0" prefWidth="66.0" styleClass="sub_button" text="Quit" />
+      <Label fx:id="mess" layoutX="14.0" layoutY="183.0" prefHeight="27.0" prefWidth="117.0" />
+      <JFXTextArea fx:id="notif" labelFloat="true" layoutX="6.0" layoutY="14.0" prefHeight="191.0" prefWidth="322.0" promptText="Notify" />
+   </children>
+</AnchorPane>

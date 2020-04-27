@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.util.Callback;
 import utils.State;
+import entityClass.Accounts;
 import entityClass.Bookings;
 import entityClass.Employee;
 import entityClass.Food;
@@ -47,7 +48,9 @@ public class SearchController {
     private JFXTextField cuslname;
 
     @FXML
-    private JFXTreeTableView<?> accountTable;
+    private JFXTreeTableView<Accounts> accountTable;
+    @FXML
+    private JFXTextField brid;
 
     @FXML
     private JFXTreeTableView<Stay> stayTable;
@@ -92,90 +95,81 @@ public class SearchController {
 	
     @FXML
     void refreshAccount() {
-
-    }
-
-    @FXML
-    void refreshBooking() {
-    	JFXTreeTableColumn<Bookings,String> col1=new JFXTreeTableColumn<>("Booking_id");
+    	JFXTreeTableColumn<Accounts,String> col1=new JFXTreeTableColumn<>("Log Date");
     	col1.setMinWidth(200);
-    	col1.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getBooking_id();
+    	col1.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Accounts,String> param){
+    			return param.getValue().getValue().getLog_date();
     		}
     	});
-    	JFXTreeTableColumn<Bookings,String> col2=new JFXTreeTableColumn<>("Booked_from");
+    	JFXTreeTableColumn<Accounts,String> col2=new JFXTreeTableColumn<>("Branch ID");
     	col2.setMinWidth(200);
-    	col2.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getBooked_from();
-    		}
-    	});
-    	JFXTreeTableColumn<Bookings,String> col3=new JFXTreeTableColumn<>("Booked_to");
-    	col3.setMinWidth(200);
-    	col3.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getBooked_to();
-    		}
-    	});
-    	JFXTreeTableColumn<Bookings,String> col4=new JFXTreeTableColumn<>("room_num");
-    	col4.setMinWidth(200);
-    	col4.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getRoom_number();
-    		}
-    	});
-    	JFXTreeTableColumn<Bookings,String> col5=new JFXTreeTableColumn<>("Branch_id");
-    	col5.setMinWidth(200);
-    	col5.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    	col2.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Accounts,String> param){
     			return param.getValue().getValue().getBranch_id();
     		}
     	});
-    	JFXTreeTableColumn<Bookings,String> col6=new JFXTreeTableColumn<>("Status");
+    	JFXTreeTableColumn<Accounts,Number> col3=new JFXTreeTableColumn<>("Kitchen");
+    	col3.setMinWidth(200);
+    	col3.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getKitchen();
+    		}
+    	});
+    	JFXTreeTableColumn<Accounts,Number> col4=new JFXTreeTableColumn<>("Taxes");
+    	col4.setMinWidth(200);
+    	col4.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getTaxes();
+    		}
+    	});
+    	JFXTreeTableColumn<Accounts,Number> col5=new JFXTreeTableColumn<>("Bills");
+    	col5.setMinWidth(200);
+    	col5.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getBills();
+    		}
+    	});
+    	JFXTreeTableColumn<Accounts,Number> col6=new JFXTreeTableColumn<>("Others");
     	col6.setMinWidth(200);
-    	col6.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getStat();
+    	col6.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getOthers();
     		}
     	});
-    	JFXTreeTableColumn<Bookings,String> col7=new JFXTreeTableColumn<>("Customer_id");
+    	JFXTreeTableColumn<Accounts,Number> col7=new JFXTreeTableColumn<>("Wages");
     	col7.setMinWidth(200);
-    	col7.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getCustomer_id();
+    	col7.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getWages();
     		}
     	});
-    	JFXTreeTableColumn<Bookings,String> col8=new JFXTreeTableColumn<>("First Name");
+    	JFXTreeTableColumn<Accounts,Number> col8=new JFXTreeTableColumn<>("Revenue");
     	col8.setMinWidth(200);
-    	col8.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getFname();
+    	col8.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getRevenue();
     		}
     	});
-    	JFXTreeTableColumn<Bookings,String> col9=new JFXTreeTableColumn<>("Last Name");
+    	JFXTreeTableColumn<Accounts,Number> col9=new JFXTreeTableColumn<>("Profit");
     	col9.setMinWidth(200);
-    	col9.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
-    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
-    			return param.getValue().getValue().getLname();
+    	col9.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Accounts,Number>,ObservableValue<Number>>(){
+    		public ObservableValue<Number> call(JFXTreeTableColumn.CellDataFeatures<Accounts,Number> param){
+    			return param.getValue().getValue().getProfit();
     		}
     	});
-    	String fname,lname;
-    	if(bookfname.getText().isEmpty()) {
-    		fname=null;
+    	String branch;
+    	if(brid.getText().isEmpty()) {
+    		branch=null;
     	}else {
-    		fname=bookfname.getText();
+    		branch=brid.getText();
     	}
-    	if(booklname.getText().isEmpty()) {
-    		lname=null;
-    	}else {
-    		lname=booklname.getText();
-    	}
-    	ObservableList<Bookings> bookings=Bookings.getBookingsData(fname,lname,false);
-    	final TreeItem<Bookings> root=new RecursiveTreeItem<Bookings>(bookings,RecursiveTreeObject::getChildren);
-    	bookTable.getColumns().setAll(col1,col2,col3,col4,col5,col6,col7,col8,col9);
-    	bookTable.setRoot(root);
-    	bookTable.setShowRoot(false);
+    	
+    	ObservableList<Accounts> accounts=Accounts.getAccountsData(branch);
+    	final TreeItem<Accounts> root=new RecursiveTreeItem<Accounts>(accounts,RecursiveTreeObject::getChildren);
+    	accountTable.getColumns().setAll(col1,col2,col3,col4,col5,col6,col7,col8,col9);
+    	accountTable.setRoot(root);
+    	accountTable.setShowRoot(false);
     }
 
     @FXML
@@ -267,6 +261,91 @@ public class SearchController {
     	custable.setRoot(root);
     	custable.setShowRoot(false);
     }
+
+    @FXML
+    void refreshBooking() {
+    	JFXTreeTableColumn<Bookings,String> col1=new JFXTreeTableColumn<>("Booking_id");
+    	col1.setMinWidth(200);
+    	col1.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getBooking_id();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col2=new JFXTreeTableColumn<>("Booked_from");
+    	col2.setMinWidth(200);
+    	col2.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getBooked_from();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col3=new JFXTreeTableColumn<>("Booked_to");
+    	col3.setMinWidth(200);
+    	col3.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getBooked_to();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col4=new JFXTreeTableColumn<>("room_num");
+    	col4.setMinWidth(200);
+    	col4.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getRoom_number();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col5=new JFXTreeTableColumn<>("Branch_id");
+    	col5.setMinWidth(200);
+    	col5.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getBranch_id();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col6=new JFXTreeTableColumn<>("Status");
+    	col6.setMinWidth(200);
+    	col6.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getStat();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col7=new JFXTreeTableColumn<>("Customer_id");
+    	col7.setMinWidth(200);
+    	col7.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getCustomer_id();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col8=new JFXTreeTableColumn<>("First Name");
+    	col8.setMinWidth(200);
+    	col8.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getFname();
+    		}
+    	});
+    	JFXTreeTableColumn<Bookings,String> col9=new JFXTreeTableColumn<>("Last Name");
+    	col9.setMinWidth(200);
+    	col9.setCellValueFactory(new Callback<JFXTreeTableColumn.CellDataFeatures<Bookings,String>,ObservableValue<String>>(){
+    		public ObservableValue<String> call(JFXTreeTableColumn.CellDataFeatures<Bookings,String> param){
+    			return param.getValue().getValue().getLname();
+    		}
+    	});
+    	String fname,lname;
+    	if(bookfname.getText().isEmpty()) {
+    		fname=null;
+    	}else {
+    		fname=bookfname.getText();
+    	}
+    	if(booklname.getText().isEmpty()) {
+    		lname=null;
+    	}else {
+    		lname=booklname.getText();
+    	}
+    	ObservableList<Bookings> bookings=Bookings.getBookingsData(fname,lname,false);
+    	final TreeItem<Bookings> root=new RecursiveTreeItem<Bookings>(bookings,RecursiveTreeObject::getChildren);
+    	bookTable.getColumns().setAll(col1,col2,col3,col4,col5,col6,col7,col8,col9);
+    	bookTable.setRoot(root);
+    	bookTable.setShowRoot(false);
+    }
+
+   
 
     @FXML
     void refreshEmployee() {

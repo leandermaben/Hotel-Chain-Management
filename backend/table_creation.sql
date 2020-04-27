@@ -78,6 +78,7 @@ create table accounts(log_date date,
                     taxes number(10,2), 
                     bills number(10,2), 
                     other number(10,2),
+                    wages number(10,2),
                     primary key(log_date,branch_id),
                     foreign key(branch_id) references branch(branch_id));
 create table contain(bill_id varchar(10),
@@ -99,3 +100,13 @@ create table users(emp_id varchar(10) primary key,
                     pin varchar(20),
                     clearance varchar(10),
                     foreign key(emp_id) references employee(emp_id));
+create table messages(mess_id varchar(10) primary key,
+                    sender varchar(10),
+                    receipient varchar(10),
+                    mess varchar(500),
+                    category varchar(20),
+                    disp varchar(1),
+                    foreign key(sender) references employee(emp_id),
+                    foreign key(receipient) references employee(emp_id),
+                    check(disp in('y','n'))
+                    );

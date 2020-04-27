@@ -125,7 +125,7 @@ public class HomeController {
     		if(ps.equals(cps)) {
     			p=con.prepareStatement("insert into users values('"+1000+"','"+ps+"','admin')");
     			p.execute();
-    			FXMLLoader fx=new FXMLLoader(getClass().getResource("AdminPage.fxml"));
+    			FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
 				AnchorPane root=(AnchorPane)fx.load();
 				Scene scene=new Scene(root,1321,881);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

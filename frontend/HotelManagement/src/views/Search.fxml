@@ -7,14 +7,7 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchController">
    <children>
     <fx:include fx:id="header" source="Header.fxml" />
@@ -26,10 +19,10 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <JFXTreeTableView fx:id="emptable" layoutY="69.0" prefHeight="719.0" prefWidth="1069.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0" />
-                        <JFXTextField fx:id="empfname" labelFloat="true" layoutX="165.0" layoutY="28.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.bottomAnchor="735.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="28.0" />
-                        <JFXTextField fx:id="emplname" labelFloat="true" layoutX="396.0" layoutY="28.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.bottomAnchor="735.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="28.0" />
-                        <JFXToggleButton fx:id="working" layoutX="885.0" layoutY="11.0" text="Working" AnchorPane.bottomAnchor="719.0" AnchorPane.leftAnchor="653.0" AnchorPane.topAnchor="11.0" />
-                        <JFXButton layoutX="892.0" layoutY="28.0" onAction="#refreshEmployee" styleClass="sub_button" text="Reload" AnchorPane.bottomAnchor="735.0" AnchorPane.leftAnchor="892.0" AnchorPane.topAnchor="28.0" />
+                        <JFXTextField fx:id="empfname" labelFloat="true" layoutX="165.0" layoutY="28.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="28.0" />
+                        <JFXTextField fx:id="emplname" labelFloat="true" layoutX="396.0" layoutY="28.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="28.0" />
+                        <JFXToggleButton fx:id="working" layoutX="885.0" layoutY="11.0" text="Working" AnchorPane.leftAnchor="653.0" AnchorPane.topAnchor="11.0" />
+                        <JFXButton layoutX="892.0" layoutY="28.0" onAction="#refreshEmployee" styleClass="sub_button" text="Reload" AnchorPane.leftAnchor="892.0" AnchorPane.topAnchor="28.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -38,9 +31,9 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <JFXTreeTableView fx:id="custable" prefHeight="719.0" prefWidth="1069.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0" />
-                        <JFXTextField fx:id="cusfname" labelFloat="true" layoutX="33.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.bottomAnchor="733.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
-                        <JFXTextField fx:id="cuslname" labelFloat="true" layoutX="437.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.bottomAnchor="733.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="30.0" />
-                        <JFXButton layoutX="715.0" layoutY="30.0" onAction="#refreshCustomer" styleClass="sub_button" text="Reload" AnchorPane.bottomAnchor="731.0" AnchorPane.leftAnchor="715.0" AnchorPane.topAnchor="30.0" />
+                        <JFXTextField fx:id="cusfname" labelFloat="true" layoutX="33.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
+                        <JFXTextField fx:id="cuslname" labelFloat="true" layoutX="437.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="30.0" />
+                        <JFXButton layoutX="715.0" layoutY="30.0" onAction="#refreshCustomer" styleClass="sub_button" text="Reload" AnchorPane.leftAnchor="715.0" AnchorPane.topAnchor="30.0" />
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -48,7 +41,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXTreeTableView fx:id="accountTable" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <JFXTreeTableView fx:id="accountTable" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0" />
+                        <JFXTextField fx:id="brid" labelFloat="true" layoutX="46.0" layoutY="25.0" prefHeight="25.0" prefWidth="228.0" promptText="Branch ID" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="25.0" />
+                        <JFXButton layoutX="400.0" layoutY="25.0" onAction="#refreshAccount" styleClass="sub_button" text="Reload" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="25.0" />
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -81,9 +76,9 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <JFXTreeTableView fx:id="bookTable" layoutY="63.0" prefHeight="717.0" prefWidth="1069.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0" />
-                        <JFXTextField fx:id="bookfname" labelFloat="true" layoutX="45.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.bottomAnchor="733.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
-                        <JFXTextField fx:id="booklname" labelFloat="true" layoutX="351.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.bottomAnchor="733.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="30.0" />
-                        <JFXButton layoutX="711.0" layoutY="30.0" onAction="#refreshBooking" styleClass="sub_button" text="Reload" />
+                        <JFXTextField fx:id="bookfname" labelFloat="true" layoutX="45.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="First Name" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
+                        <JFXTextField fx:id="booklname" labelFloat="true" layoutX="351.0" layoutY="30.0" maxWidth="200.0" minWidth="200.0" promptText="Last Name" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="30.0" />
+                        <JFXButton layoutX="711.0" layoutY="30.0" onAction="#refreshBooking" styleClass="sub_button" text="Reload" AnchorPane.leftAnchor="711.0" AnchorPane.topAnchor="30.0" />
                      </children></AnchorPane>
                </content>
             </Tab>

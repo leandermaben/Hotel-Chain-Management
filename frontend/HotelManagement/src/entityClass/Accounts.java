@@ -1,9 +1,11 @@
 package entityClass;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.time.format.DateTimeFormatter;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -95,33 +97,33 @@ public class Accounts extends RecursiveTreeObject<Accounts>{
 		this.profit = profit;
 	}
 
-	/*public static ObservableList<Accounts> getAccountsData(String branch){
+	public static ObservableList<Accounts> getAccountsData(String branch){
 		try {
 			Connection con=dbConnect();
 			PreparedStatement ps1;
-			if(branch!=null) 
-				ps1=con.prepareStatement("select employee.emp_id,fname,lname,gender,position,joined,released,salary,aadhar_number,branch_id,pin,clearance from employee left outer join users on employee.emp_id=users.emp_id");
+			CallableStatement cst;
+			if(branch==null) 
+				ps1=con.prepareStatement("select log_date,branch_id,kitchen,taxes,bills,other,wages from accounts");
 			else 
-				ps1=con.prepareStatement("select employee.emp_id,fname,lname,gender,position,joined,released,salary,aadhar_number,branch_id,pin,clearance from employee left outer join users on employee.emp_id=users.emp_id where lname='"+lname+"'");
-			
+				ps1=con.prepareStatement("select log_date,branch_id,kitchen,taxes,bills,other,wages from accounts where branch_id='"+branch+"'");
 			ResultSet rs=ps1.executeQuery();
-			ObservableList<Employee> employee=FXCollections.observableArrayList();
+			ObservableList<Accounts> account=FXCollections.observableArrayList();
 			DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			while(rs.next()) {
-				employee.add(new Employee(new SimpleStringProperty(rs.getString(1)),new SimpleStringProperty(rs.getString(2)),new SimpleStringProperty(rs.getString(3)),new SimpleStringProperty(rs.getString(4)),new SimpleStringProperty(rs.getString(5)),new SimpleStringProperty(rs.getDate(6).toLocalDate().format(df)),new SimpleStringProperty((rs.getDate(7)!=null)?rs.getDate(7).toLocalDate().format(df):" "),new SimpleDoubleProperty(rs.getDouble(8)),new SimpleStringProperty(rs.getString(9)),new SimpleStringProperty(rs.getString(10)),new SimpleStringProperty(rs.getString(11)),new SimpleStringProperty(rs.getString(12))));
+				System.out.println("Here");
+				cst=con.prepareCall("{call calcRevenue(?,?,?)}");
+				cst.setDate(1,rs.getDate(1));
+				cst.registerOutParameter(2, Types.DOUBLE);
+				cst.registerOutParameter(3, Types.DOUBLE);
+				cst.execute();
+				account.add(new Accounts(new SimpleStringProperty(rs.getDate(1).toLocalDate().format(df)),new SimpleStringProperty(rs.getString(2)),new SimpleDoubleProperty(rs.getDouble(3)),new SimpleDoubleProperty(rs.getDouble(4)),new SimpleDoubleProperty(rs.getDouble(5)),new SimpleDoubleProperty(rs.getDouble(6)),new SimpleDoubleProperty(rs.getDouble(7)),new SimpleDoubleProperty(cst.getDouble(2)),new SimpleDoubleProperty(cst.getDouble(3))));
 			}
-			return employee;
+			System.out.println(account.size());
+			return account;
 			
 		}catch(Exception e){
 			System.out.println(e);
 			return null;
 		}
-	}*/
-	/*
-	 * with stayRev(log_date,branch_id,amount1) as (select check_out,branch_id,sum((check_out-check_in)*basic_cost+extra_cost-discount) from stay natural join room group by check_out,branch_id),
-foodRev(log_date,branch_id,amount2) as (select issued,branch_id,sum(price) from invoice group by issued,branch_id),
-initAccount(log_date,branch_id,kitchen,taxes,bills,other,revenue) as (select accounts.log_date,accounts.branch_id,kitchen,taxes,bills,other,amount1+amount2 from accounts full outer join foodRev on accounts.log_date=foodRev.log_date and accounts.branch_id=foodRev.branch_id full outer join stayRev on stayRev.log_date=foodRev.log_date and stayRev.branch_id = foodRev.branch_id)
-select log_date,t.branch_id,kitchen,taxes,bills,other,wages,revenue,revenue-wages from initAccount t,lateral(select sum(salary)/30 as wages from employee where joined<=log_date and (released is null or released>=log_date) and employee.branch_id=t.branch_id)
-*/
-
+	}
 }

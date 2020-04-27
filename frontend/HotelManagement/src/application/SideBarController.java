@@ -62,7 +62,22 @@ public class SideBarController {
 
 	    @FXML
 	    void notifyAdmin() {
-
+	    	try {
+				Stage stage=new Stage();
+	    		FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/NotifyAdmin.fxml"));
+	    		AnchorPane root=(AnchorPane)fx.load();
+	    		Scene scene=new Scene(root,336,267);
+	    		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	    		((NotifyAdminController)fx.getController()).setState(state);
+	    		((NotifyAdminController)fx.getController()).setStage(stage);
+	    		stage.setScene(scene);
+	    		stage.initStyle(StageStyle.TRANSPARENT);
+	    		stage.show();
+	    	}
+	    	catch(Exception e) 
+	    	{
+	    		e.printStackTrace();
+	    	}
 	    }
 
 	    @FXML
