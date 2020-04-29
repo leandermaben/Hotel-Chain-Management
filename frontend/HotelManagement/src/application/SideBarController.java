@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,13 +24,10 @@ public class SideBarController {
 		public void changePassword() {
 			try {
 				Stage stage=new Stage();
-	    		FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/ChangePassword.fxml"));
-	    		AnchorPane root=(AnchorPane)fx.load();
-	    		Scene scene=new Scene(root,336,267);
-	    		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-	    		((ChangePasswordController)fx.getController()).setState(state);
-	    		((ChangePasswordController)fx.getController()).setStage(stage);
-	    		stage.setScene(scene);
+				ArrayList<Object> fx=state.getPage("ChangePassword");
+	    		((ChangePasswordController)fx.get(1)).setState(state);
+	    		((ChangePasswordController)fx.get(1)).setStage(stage);
+	    		stage.setScene((Scene) fx.get(0));
 	    		stage.initStyle(StageStyle.TRANSPARENT);
 	    		stage.show();
 	    	}
@@ -57,20 +56,29 @@ public class SideBarController {
 
 	    @FXML
 	    void message() {
-
+	    	try {
+				Stage stage=new Stage();
+				ArrayList<Object> fx=state.getPage("Message");
+	    		((MessageController)fx.get(1)).setState(state);
+	    		((MessageController)fx.get(1)).setStage(stage);
+	    		stage.setScene((Scene)fx.get(0));
+	    		stage.initStyle(StageStyle.TRANSPARENT);
+	    		stage.show();
+	    	}
+	    	catch(Exception e) 
+	    	{
+	    		e.printStackTrace();
+	    	}
 	    }
 
 	    @FXML
 	    void notifyAdmin() {
 	    	try {
 				Stage stage=new Stage();
-	    		FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/NotifyAdmin.fxml"));
-	    		AnchorPane root=(AnchorPane)fx.load();
-	    		Scene scene=new Scene(root,336,267);
-	    		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-	    		((NotifyAdminController)fx.getController()).setState(state);
-	    		((NotifyAdminController)fx.getController()).setStage(stage);
-	    		stage.setScene(scene);
+				ArrayList<Object> fx=state.getPage("NotifyAdmin");
+	    		((NotifyAdminController)fx.get(1)).setState(state);
+	    		((NotifyAdminController)fx.get(1)).setStage(stage);
+	    		stage.setScene((Scene)fx.get(0));
 	    		stage.initStyle(StageStyle.TRANSPARENT);
 	    		stage.show();
 	    	}

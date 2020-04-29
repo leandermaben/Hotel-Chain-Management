@@ -2,10 +2,8 @@
 
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXClippedPane?>
 <?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -17,11 +15,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: #242833;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPageController">
    <children>
    	<fx:include fx:id="header" source="Header.fxml" />
       <fx:include fx:id="sideBar" source="SideBar.fxml" />
-      <GridPane hgap="40.0" layoutX="251.0" layoutY="64.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: F3F3F3; -fx-padding: 10;" vgap="40.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="64.0">
+      <GridPane hgap="40.0" layoutX="251.0" layoutY="64.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: transparent; -fx-padding: 10;" vgap="40.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="64.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="219.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="794.0" minWidth="10.0" prefWidth="219.0" />
@@ -58,18 +56,22 @@
                   </Label>
                </children>
             </JFXBadge>
-            <JFXBadge style="-fx-background-color: white;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
-               <children>
-                  <LineChart>
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </LineChart>
-               </children>
-            </JFXBadge>
+            <LineChart fx:id="accountsGraph" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" style="-fx-border-color: white; -fx-border-radius: 10;" title="Accounts" verticalGridLinesVisible="false" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+              <xAxis>
+                <CategoryAxis label="Dates" side="BOTTOM" tickLabelFill="WHITE" fx:id="xAxis">
+                     <tickLabelFont>
+                        <Font name="Microsoft Sans Serif" size="8.0" />
+                     </tickLabelFont>
+                  </CategoryAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxis" label="Amount" side="LEFT" tickLabelFill="WHITE">
+                     <tickLabelFont>
+                        <Font size="10.0" />
+                     </tickLabelFont>
+                  </NumberAxis>
+              </yAxis>
+            </LineChart>
             <JFXBadge fx:id="allot" prefHeight="229.0" prefWidth="219.0" GridPane.columnIndex="1">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="75.0">
@@ -95,7 +97,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIconView glyphName="KEY" scaleX="5.0" scaleY="5.0" translateX="55.0" wrappingWidth="14.800000190734863" />
+                  <FontAwesomeIconView glyphName="LOCK" scaleX="6.0" scaleY="6.0" translateX="55.0" wrappingWidth="8.600000381469727" />
                </children></JFXBadge>
             <JFXBadge fx:id="hire" GridPane.columnIndex="2">
                <children>
@@ -113,14 +115,22 @@
                </children></JFXBadge>
             <JFXBadge fx:id="notify" style="-fx-padding: 10;" styleClass="notify" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <JFXButton fx:id="notifybtn" onAction="#notifyByAdmin" prefHeight="33.0" prefWidth="83.0" style="-fx-border-radius: 5;" text="Send" translateY="90.0">
+                  <JFXButton fx:id="notifybtn" onAction="#notifyByAdmin" prefHeight="33.0" prefWidth="83.0" style="-fx-border-radius: 5;" text="Launch" textFill="#fcf8f8" translateY="90.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXCheckBox text="Supervisor" translateX="-50.0" translateY="-80.0" unCheckedColor="#323232" />
-                  <JFXCheckBox text="Employee" translateX="50.0" translateY="-80.0" />
-                  <JFXTextArea labelFloat="true" maxHeight="100.0" prefHeight="130.0" prefWidth="228.0" promptText="Notify" style="-fx-background-color: white;" />
+                  <FontAwesomeIconView glyphName="BELL" scaleX="5.0" scaleY="5.0" translateX="55.0" translateY="-10.0" />
+                  <Label text="Admin" textFill="WHITE" translateX="-40.0" translateY="-25.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Notification" textFill="WHITE" translateX="-40.0" translateY="25.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children></JFXBadge>
             <JFXBadge fx:id="search" maxHeight="400.0" prefHeight="219.0" prefWidth="230.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
@@ -142,15 +152,16 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="392.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="445.0" minHeight="10.0" prefHeight="445.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="445.0" minHeight="10.0" prefHeight="426.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXListView prefHeight="238.0" prefWidth="231.0" GridPane.rowIndex="1" />
+                  <JFXListView fx:id="notifbar" prefHeight="238.0" prefWidth="231.0" GridPane.rowIndex="1" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <JFXButton layoutX="75.0" layoutY="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Clear" />
-                        <JFXButton layoutX="157.0" layoutY="1.0" prefHeight="27.0" prefWidth="74.0" styleClass="sub_button" text="Clear All" />
+                        <JFXButton layoutX="81.0" layoutY="6.0" onAction="#clear" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Clear" />
+                        <JFXButton layoutX="157.0" layoutY="6.0" onAction="#clearAll" prefHeight="27.0" prefWidth="74.0" styleClass="sub_button" text="Clear All" />
+                        <JFXButton layoutY="6.0" onAction="#showNotif" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Show" />
                      </children>
                   </AnchorPane>
                   <Label prefHeight="42.0" prefWidth="231.0" style="-fx-background-color: darkred; -fx-padding: 5;" text="Notifications" textFill="#eee9e9">

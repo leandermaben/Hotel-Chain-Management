@@ -25,6 +25,13 @@ create or replace procedure calcRevenue(logdate in date,revenue out number,profi
         profit:=roomCost+foodCost-accRecord.wages-accRecord.kitchen-accRecord.taxes-accRecord.bills-accRecord.other;
     END;
 
+create or replace procedure calcCost(logdate in date,cost out number) as
+        accRecord accounts%rowtype;
+    BEGIN
+        select * into accRecord from accounts where log_date like logdate;
+        cost:=accRecord.kitchen+accRecord.taxes+accRecord.bills+accRecord.other+accRecord.wages;
+    END;
+
 create or replace procedure addAccountRecord(logdate in date,wages out number) AS
     accRecord accounts%rowtype;
     num number(1);

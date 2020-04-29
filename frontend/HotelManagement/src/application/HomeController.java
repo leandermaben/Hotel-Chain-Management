@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
@@ -84,15 +85,19 @@ public class HomeController {
     			if(!rs.getString(1).equals(ps)){
     				throw new Exception("Invalid Password");
     			}else {
+    				loginWindow.close();
+					State state=new State(stage,id);
     				if(rs.getString(2).equals("admin")) {
-    					FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
-    					AnchorPane root=(AnchorPane)fx.load();
-    					Scene scene=new Scene(root,1321,881);
-    					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-    					loginWindow.close();
-    					State state=new State(stage,id);
-    					((AdminPageController)fx.getController()).setState(state);
-    					stage.setScene(scene);
+    					ArrayList<Object> fx=state.getPage("AdminPage");
+    					((AdminPageController)fx.get(1)).setState(state);
+    					stage.setScene((Scene)fx.get(0));
+    					stage.show();
+    				}else if(rs.getString(2).equals("supervisor")) {
+    					
+    				}else {
+    					ArrayList<Object> fx=state.getPage("Booking");
+    					((BookingController)fx.get(1)).setState(state);
+    					stage.setScene((Scene)fx.get(0));
     					stage.show();
     				}
     			}
@@ -125,14 +130,11 @@ public class HomeController {
     		if(ps.equals(cps)) {
     			p=con.prepareStatement("insert into users values('"+1000+"','"+ps+"','admin')");
     			p.execute();
-    			FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
-				AnchorPane root=(AnchorPane)fx.load();
-				Scene scene=new Scene(root,1321,881);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				State state=new State(stage,"1000");
 				loginWindow.close();
-				State state=new State(stage,"1000",fn,ln,"admin");
-				((AdminPageController)fx.getController()).setState(state);
-				stage.setScene(scene);
+				ArrayList<Object> fx=state.getPage("AdminPage");
+				((AdminPageController)fx.get(1)).setState(state);
+				stage.setScene((Scene)fx.get(0));
 				stage.show();
     		}
     	}catch(Exception e) {

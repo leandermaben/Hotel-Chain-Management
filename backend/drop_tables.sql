@@ -1,3 +1,5 @@
+drop table inbox;
+drop table messages;
 drop table users;
 drop table phone;
 drop table allotment;

@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="20.0" layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%); -fx-padding: 5;" vgap="5.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HeaderController">
+<GridPane hgap="20.0" layoutX="252.0" prefHeight="57.0" prefWidth="1069.0" style="-fx-background-color: linear-gradient(to right, rgba(255,0,121,1) 0%, rgba(255,145,0,1) 100%); -fx-padding: 5;" vgap="5.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="application.HeaderController">
     <columnConstraints>
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="0.0" prefWidth="84.0" />
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="841.0" minWidth="10.0" prefWidth="502.0" />
@@ -43,7 +29,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <JFXButton onAction="#back" prefHeight="65.0" prefWidth="74.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <JFXButton fx:id="backbtn" onAction="#back" prefHeight="65.0" prefWidth="74.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,5 +49,3 @@
             </AnchorPane>
          </children>
          </GridPane>
-
-

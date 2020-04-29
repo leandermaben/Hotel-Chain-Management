@@ -80,5 +80,37 @@
 .sidebar-button{
 	-fx-border-color:transparent;
 }
-
-
+.pop-ups{
+	-fx-border-color:black;
+	-fx-border-width:3;
+	 -fx-background-color:#242833;
+	 -fx-border-radius:5;
+	 -fx-background-radius:5;
+}
+.pop-inputs{
+	-fx-text-inner-color:white;
+}
+.chart-legend-item{
+    -fx-text-fill: #4682b4;
+}
+.chart-title {
+  -fx-text-fill: #4682b4;
+  -fx-font-size: 2.3em;
+}
+ 
+.axis-label {
+  -fx-text-fill: #4682b4;
+  -fx-font-size: 1.8em;
+}
+.chart-legend{
+	-fx-background-color:transparent ;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.default-color0.chart-series-line { -fx-stroke: #e9ab18; }
+.default-color1.chart-series-line { -fx-stroke: #69bf3e; }
+.default-color2.chart-series-line { -fx-stroke: #a6352d; }
+.default-color0.chart-line-symbol { -fx-background-color: #e9ab18, white; }
+.default-color1.chart-line-symbol { -fx-background-color: #69bf3e, white; }
+.default-color2.chart-line-symbol { -fx-background-color: #a6352d, white; }

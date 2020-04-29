@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.jfoenix.controls.JFXButton;
+
 import application.AdminPageController;
 import application.BookingController;
 import javafx.application.Platform;
@@ -19,7 +21,10 @@ import utils.State;
 
 public class HeaderController {
 	State state;
+	@FXML
+	private JFXButton backbtn;
 	
+
 	@FXML
 	Label name;
 	@FXML
@@ -35,7 +40,12 @@ public class HeaderController {
 		name.setText("Welcome  "+state.getEmpName());
 		new Timer(clock);
 	}
-	
+	public JFXButton getBackbtn() {
+		return backbtn;
+	}
+	public void setBackbtn(JFXButton backbtn) {
+		this.backbtn = backbtn;
+	}
 	public void back() {
 		try {
 			Stage stage=state.getStage();

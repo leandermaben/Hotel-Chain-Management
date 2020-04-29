@@ -67,12 +67,18 @@ public class NotifyAdminController {
 	    	try {
 	    		Connection con=dbConnect();
 	    		PreparedStatement ps;
-	    		ResultSet rs;
 	    		int id=genMessId();
 	    		if(id==-1)
 	    			throw new Exception("Could not generte valid Id");
-	    		ps=con.prepareStatement("insert into messages values('"+id+"','"+state.getEmp_id()+"',null,'"+message+"','notifyAdmin','y')");
+	    		ps=con.prepareStatement("insert into messages values('"+id+"',current_date,'"+state.getEmp_id()+"',?,'notifyAdmin')");
+	    		ps.setString(1,message);
 	    		ps.execute();
+	    		ps=con.prepareStatement("select emp_id from users where clearance='admin'");
+	    		ResultSet rs=ps.executeQuery();
+	    		while(rs.next()) {
+	    			ps=con.prepareStatement("insert into inbox values('"+id+"','"+rs.getString(1)+"','y')");
+		    		ps.execute();
+	    		}
 	    	}catch(Exception e) {
 	    		e.printStackTrace();
 	    	}

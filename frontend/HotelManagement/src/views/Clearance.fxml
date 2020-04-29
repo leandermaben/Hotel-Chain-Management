@@ -8,11 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: F3F3F3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ClearanceController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: #242833;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ClearanceController">
    <children>
     <fx:include fx:id="header" source="Header.fxml" />
     <fx:include fx:id="sideBar" source="SideBar.fxml" />
@@ -42,7 +40,7 @@
                   </Label>
                </children>
             </JFXBadge>
-            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: black;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: #976f55;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.columnSpan="2">
                <children>
                   <Label prefHeight="17.0" prefWidth="67.0" text="Revoke :" translateX="30.0" translateY="-75.0">
                      <font>
@@ -88,7 +86,7 @@
                   </Label>
                </children>
             </JFXBadge>
-            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: black;" styleClass="infoArea" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: #976f55;" styleClass="infoArea" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="17.0" prefWidth="67.0" text="Revoke :" translateX="30.0" translateY="-75.0">
                      <font>
@@ -106,7 +104,7 @@
                   <JFXButton onAction="#revokeSupervisor" styleClass="sub_button" text="Revoke" translateX="30.0" translateY="80.0" />
                </children>
             </JFXBadge>
-            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: black;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <JFXBadge prefHeight="248.0" prefWidth="765.0" style="-fx-border-color: #976f55;" styleClass="infoArea" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
                   <Label prefHeight="17.0" prefWidth="67.0" text="Revoke :" translateX="30.0" translateY="-75.0">
                      <font>

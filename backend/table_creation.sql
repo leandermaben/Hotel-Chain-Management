@@ -101,12 +101,17 @@ create table users(emp_id varchar(10) primary key,
                     clearance varchar(10),
                     foreign key(emp_id) references employee(emp_id));
 create table messages(mess_id varchar(10) primary key,
+                    sent_date date,
                     sender varchar(10),
-                    receipient varchar(10),
                     mess varchar(500),
                     category varchar(20),
-                    disp varchar(1),
-                    foreign key(sender) references employee(emp_id),
-                    foreign key(receipient) references employee(emp_id),
-                    check(disp in('y','n'))
+                    foreign key(sender) references employee(emp_id)
                     );
+create table inbox(mess_id varchar(10),
+                receipient varchar(10),
+                disp varchar(1),
+                primary key(mess_id,receipient),
+                foreign key(mess_id) references messages(mess_id),
+                foreign key(receipient) references employee(emp_id),
+                check(disp in('y','n'))
+                );
