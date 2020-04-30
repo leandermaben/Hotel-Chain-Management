@@ -39,6 +39,7 @@
                         <JFXButton layoutX="285.0" layoutY="543.0" onAction="#clearIn" prefHeight="27.0" prefWidth="56.0" styleClass="sub_button" text="Clear" />
                         <JFXButton layoutX="378.0" layoutY="543.0" onAction="#clearAllIn" styleClass="sub_button" text="Clear All" />
                         <JFXButton layoutX="14.0" layoutY="544.0" onAction="#quit" prefHeight="27.0" prefWidth="50.0" styleClass="sub_button" text="Quit" />
+                        <JFXButton layoutX="187.0" layoutY="543.0" onAction="#popInbox" prefHeight="27.0" prefWidth="56.0" styleClass="sub_button" text="Reload" />
                      </children>
                   </AnchorPane>
               </content>
@@ -49,6 +50,7 @@
                      <children>
                         <JFXListView fx:id="sentList" layoutX="18.0" layoutY="14.0" prefHeight="533.0" prefWidth="429.0" />
                         <JFXButton layoutX="17.0" layoutY="553.0" onAction="#quit" prefHeight="27.0" prefWidth="48.0" styleClass="sub_button" text="Quit" />
+                        <JFXButton layoutX="388.0" layoutY="553.0" onAction="#popSent" prefHeight="27.0" prefWidth="59.0" styleClass="sub_button" text="Reload" />
                      </children></AnchorPane>
               </content>
             </Tab>

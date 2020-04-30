@@ -23,14 +23,19 @@ public class SideBarController {
 		
 		public void changePassword() {
 			try {
-				Stage stage=new Stage();
 				ArrayList<Object> fx=state.getPage("ChangePassword");
-	    		((ChangePasswordController)fx.get(1)).setState(state);
-	    		((ChangePasswordController)fx.get(1)).setStage(stage);
-	    		stage.setScene((Scene) fx.get(0));
-	    		stage.initStyle(StageStyle.TRANSPARENT);
-	    		stage.show();
-	    	}
+	    		if((boolean)fx.get(2)) {
+	    			Stage stage=new Stage();
+	        		((ChangePasswordController)fx.get(1)).setStage(stage);
+	        		((ChangePasswordController)fx.get(1)).setState(state);
+	        		stage.initStyle(StageStyle.TRANSPARENT);
+	        		fx.add(stage);
+	        		stage.setScene((Scene)fx.get(0));
+	    		}
+
+	    		Stage stage=((Stage)fx.get(3));
+	    		stage.toFront();
+	    		stage.show();	    	}
 	    	catch(Exception e) 
 	    	{
 	    		e.printStackTrace();
@@ -39,6 +44,7 @@ public class SideBarController {
 		@FXML
 	    void logout() {
 			state.getStage().close();
+			state.closeAllPopUps();
 			Stage primaryStage=new Stage();
 			try {
 				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Home.fxml"));
@@ -57,12 +63,18 @@ public class SideBarController {
 	    @FXML
 	    void message() {
 	    	try {
-				Stage stage=new Stage();
-				ArrayList<Object> fx=state.getPage("Message");
-	    		((MessageController)fx.get(1)).setState(state);
-	    		((MessageController)fx.get(1)).setStage(stage);
-	    		stage.setScene((Scene)fx.get(0));
-	    		stage.initStyle(StageStyle.TRANSPARENT);
+	    		ArrayList<Object> fx=state.getPage("Message");
+	    		if((boolean)fx.get(2)) {
+	    			Stage stage=new Stage();
+	        		((MessageController)fx.get(1)).setStage(stage);
+	        		((MessageController)fx.get(1)).setState(state);
+	        		stage.initStyle(StageStyle.TRANSPARENT);
+	        		fx.add(stage);
+	        		stage.setScene((Scene)fx.get(0));
+	    		}
+
+	    		Stage stage=((Stage)fx.get(3));
+	    		stage.toFront();
 	    		stage.show();
 	    	}
 	    	catch(Exception e) 
@@ -74,12 +86,18 @@ public class SideBarController {
 	    @FXML
 	    void notifyAdmin() {
 	    	try {
-				Stage stage=new Stage();
-				ArrayList<Object> fx=state.getPage("NotifyAdmin");
-	    		((NotifyAdminController)fx.get(1)).setState(state);
-	    		((NotifyAdminController)fx.get(1)).setStage(stage);
-	    		stage.setScene((Scene)fx.get(0));
-	    		stage.initStyle(StageStyle.TRANSPARENT);
+	    		ArrayList<Object> fx=state.getPage("NotifyAdmin");
+	    		if((boolean)fx.get(2)) {
+	    			Stage stage=new Stage();
+	        		((NotifyAdminController)fx.get(1)).setStage(stage);
+	        		((NotifyAdminController)fx.get(1)).setState(state);
+	        		stage.initStyle(StageStyle.TRANSPARENT);
+	        		fx.add(stage);
+	        		stage.setScene((Scene)fx.get(0));
+	    		}
+
+	    		Stage stage=((Stage)fx.get(3));
+	    		stage.toFront();
 	    		stage.show();
 	    	}
 	    	catch(Exception e) 
@@ -88,8 +106,5 @@ public class SideBarController {
 	    	}
 	    }
 
-	    @FXML
-	    void notifyByAdmin() {
-
-	    }
+	  
 }

@@ -295,7 +295,8 @@ public class BookingController {
 	public void setState(State state) {
 				this.state = state;
 				headerController.setState(state);
-				headerController.getBackbtn().setVisible(false);
+				if(state.getClearance().equals("employee"))
+					headerController.getBackbtn().setVisible(false);
 				sideBarController.setState(state);
 		}
 

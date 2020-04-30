@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXClippedPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1321.0" style="-fx-background-color: #242833;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SupervisorPageController">
+   <children>
+   	<fx:include fx:id="header" source="Header.fxml" />
+      <fx:include fx:id="sideBar" source="SideBar.fxml" />
+      <GridPane hgap="40.0" layoutX="252.0" layoutY="284.0" prefHeight="336.0" prefWidth="1069.0" style="-fx-background-color: transparent; -fx-padding: 10;" vgap="40.0" AnchorPane.topAnchor="284.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="219.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="794.0" minWidth="10.0" prefWidth="219.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="794.0" minWidth="10.0" prefWidth="231.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="308.0" minHeight="10.0" prefHeight="225.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXBadge fx:id="book">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#launchBooking" text="Launch" textFill="WHITE" translateY="75.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></JFXButton>
+                  <Label text="Booking" textFill="WHITE" translateX="-40.0" translateY="-50.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="And" textFill="WHITE" translateX="-40.0" translateY="-10.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="BOOK" scaleX="5.0" scaleY="5.0" translateX="55.0" />
+                  <Label text="Booking" textFill="WHITE" translateX="-40.0" translateY="30.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </JFXBadge>
+            <JFXBadge fx:id="hire" GridPane.columnIndex="2">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#launchLogistics" text="Launch" textFill="WHITE" translateY="75.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <Label text="Logistics" textFill="WHITE" translateX="-40.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="TRUCK" scaleX="5.0" scaleY="5.0" translateX="55.0" wrappingWidth="14.800000190734863" />
+               </children></JFXBadge>
+            <JFXBadge fx:id="allot" prefHeight="229.0" prefWidth="219.0" GridPane.columnIndex="1">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#launchSchedule" text="Launch" textFill="WHITE" translateY="75.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIconView glyphName="CALENDAR" scaleX="5.0" scaleY="5.0" translateX="55.0" />
+                  <Label text="Scheduling" textFill="WHITE" translateX="-40.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </JFXBadge>
+         </children>
+      </GridPane>
+      <JFXClippedPane />
+   </children>
+</AnchorPane>

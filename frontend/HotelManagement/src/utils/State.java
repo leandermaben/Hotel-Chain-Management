@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+
 import static utils.Connect.dbConnect;
 
 import javafx.fxml.FXMLLoader;
@@ -71,141 +73,168 @@ public class State {
 		store.put("Logistics", new ArrayList());
 		store.put("Message", new ArrayList());
 		store.put("NotifyAdmin", new ArrayList());
+		store.put("Schedule", new ArrayList());
 		store.put("Search", new ArrayList());
+		store.put("SupervisorPage", new ArrayList());
 	}
 
+	public String getClearance() {
+		return clearance;
+	}
+	public void setClearance(String clearance) {
+		this.clearance = clearance;
+	}
 	public ArrayList<Object> getPage(String page){
+		Scene scene=null;
+		FXMLLoader fx=null;
 		if(store.get(page).size()!=0) {
+			store.get(page).set(2, false);
 			return store.get(page);
 		}
 		switch(page) {
 			case "AdminPage":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,1321,881);
+					scene=new Scene(root,1321,881);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("AdminPage").add(scene);
-					store.get("AdminPage").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "AdminNotification":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminNotification.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/AdminNotification.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,354,303);
+					scene=new Scene(root,354,303);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("AdminNotification").add(scene);
-					store.get("AdminNotification").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "Booking":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Booking.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/Booking.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,1321,881);
+					scene=new Scene(root,1321,881);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("Booking").add(scene);
-					store.get("Booking").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "ChangePassword":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/ChangePassword.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/ChangePassword.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,336,267);
+					scene=new Scene(root,336,267);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("ChangePassword").add(scene);
-					store.get("ChangePassword").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "Clearance":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Clearance.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/Clearance.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,1321,881);
+					scene=new Scene(root,1321,881);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("Clearance").add(scene);
-					store.get("Clearance").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "Logistics":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Logistics.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/Logistics.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,1321,881);
+					scene=new Scene(root,1321,881);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("Logistics").add(scene);
-					store.get("Logistics").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "Message":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Message.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/Message.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,463,629);
+					scene=new Scene(root,463,629);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("Message").add(scene);
-					store.get("Message").add(fx.getController());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "NotifyAdmin":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/NotifyAdmin.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/NotifyAdmin.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,336,267);
+					scene=new Scene(root,336,267);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("NotifyAdmin").add(scene);
-					store.get("NotifyAdmin").add(fx.getController());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+				}
+			case "Schedule":{
+				fx=new FXMLLoader(getClass().getResource("/views/Schedule.fxml"));
+				AnchorPane root;
+				try {
+					root = (AnchorPane)fx.load();
+					scene=new Scene(root,1321,881);
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 			case "Search":{
-				FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/Search.fxml"));
+				fx=new FXMLLoader(getClass().getResource("/views/Search.fxml"));
 				AnchorPane root;
 				try {
 					root = (AnchorPane)fx.load();
-					Scene scene=new Scene(root,1321,881);
+					scene=new Scene(root,1321,881);
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					store.get("Search").add(scene);
-					store.get("Search").add(fx.getController());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+				}
+			case "SupervisorPage":{
+				fx=new FXMLLoader(getClass().getResource("/views/SupervisorPage.fxml"));
+				AnchorPane root;
+				try {
+					root = (AnchorPane)fx.load();
+					scene=new Scene(root,1321,881);
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 				}
 		}
+		store.get(page).add(scene);
+		store.get(page).add(fx.getController());
+		store.get(page).add(new Boolean(true));
 		return store.get(page);
+	}
+	public void closeAllPopUps() {
+		for(Map.Entry<String,ArrayList<Object>> x:store.entrySet()) {
+			if(x.getValue().size()==4) {
+				((Stage)x.getValue().get(3)).close();
+			}
+		}
 	}
 }

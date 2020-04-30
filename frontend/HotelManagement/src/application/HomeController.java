@@ -13,16 +13,24 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utils.Connect;
 import utils.State;
 
 public class HomeController {
 
+	@FXML
+	private Label mess;
+	
+	@FXML
+	private Label setmess;
+	
 	@FXML
 	private GridPane sign;
 	
@@ -93,7 +101,10 @@ public class HomeController {
     					stage.setScene((Scene)fx.get(0));
     					stage.show();
     				}else if(rs.getString(2).equals("supervisor")) {
-    					
+    					ArrayList<Object> fx=state.getPage("SupervisorPage");
+    					((SupervisorPageController)fx.get(1)).setState(state);
+    					stage.setScene((Scene)fx.get(0));
+    					stage.show();
     				}else {
     					ArrayList<Object> fx=state.getPage("Booking");
     					((BookingController)fx.get(1)).setState(state);
@@ -103,6 +114,8 @@ public class HomeController {
     			}
     		}
     	}catch(Exception e) {
+    		mess.setTextFill(Color.RED);
+    		mess.setText(e.getMessage());
     		e.printStackTrace();
     	}
     }
@@ -117,9 +130,11 @@ public class HomeController {
     		String ln=lname.getText();
     		String pn=phone.getText();
     		String ad=aadhar.getText();
-    		String gen=((JFXRadioButton)gd.getSelectedToggle()).getText();
     		String ps=pass.getText();
     		String cps=conpass.getText();
+    		if(fn.isEmpty()||ln.isEmpty()||pn.isEmpty()||ad.isEmpty()||gd.getSelectedToggle()==null||ps.isEmpty()||cps.isEmpty())
+    			throw new Exception("All Fields are required.");
+    		String gen=((JFXRadioButton)gd.getSelectedToggle()).getText();
     		PreparedStatement p=con.prepareStatement("select count(*) from employee");
     		ResultSet rs=p.executeQuery();
     		rs.next();
@@ -136,8 +151,12 @@ public class HomeController {
 				((AdminPageController)fx.get(1)).setState(state);
 				stage.setScene((Scene)fx.get(0));
 				stage.show();
+    		}else {
+    			throw new Exception("Passwords don't match");
     		}
     	}catch(Exception e) {
+    		setmess.setTextFill(Color.RED);
+    		setmess.setText(e.getMessage());
     		e.printStackTrace();
     	}
     }
@@ -156,8 +175,8 @@ public class HomeController {
     
     @FXML
     void move(MouseEvent event) {
-	 loginWindow.setX(event.getScreenX() - xOffset);
-     loginWindow.setY(event.getScreenY() - yOffset);
+    	loginWindow.setX(event.getScreenX() - xOffset);
+    	loginWindow.setY(event.getScreenY() - yOffset);
     }
 
     @FXML

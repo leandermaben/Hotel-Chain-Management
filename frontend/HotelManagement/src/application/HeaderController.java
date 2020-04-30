@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 
@@ -48,13 +49,13 @@ public class HeaderController {
 	}
 	public void back() {
 		try {
-			Stage stage=state.getStage();
-			FXMLLoader fx=new FXMLLoader(getClass().getResource("/views/AdminPage.fxml"));
-			AnchorPane root=(AnchorPane)fx.load();
-			Scene scene=new Scene(root,1321,881);
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			((AdminPageController)fx.getController()).setState(state);
-			stage.setScene(scene);
+			if(state.getClearance().equals("admin")){
+				ArrayList<Object> fx=state.getPage("AdminPage");
+				state.getStage().setScene((Scene)fx.get(0));
+			}else {
+				ArrayList<Object> fx=state.getPage("SupervisorPage");
+				state.getStage().setScene((Scene)fx.get(0));
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

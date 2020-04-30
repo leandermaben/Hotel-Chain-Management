@@ -19,7 +19,7 @@
    <children>
    	<fx:include fx:id="header" source="Header.fxml" />
       <fx:include fx:id="sideBar" source="SideBar.fxml" />
-      <GridPane hgap="40.0" layoutX="251.0" layoutY="64.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: transparent; -fx-padding: 10;" vgap="40.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="64.0">
+      <GridPane hgap="40.0" layoutX="251.0" layoutY="64.0" prefHeight="811.0" prefWidth="1070.0" style="-fx-background-color: transparent; -fx-padding: 10;" vgap="40.0" AnchorPane.topAnchor="64.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="219.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="794.0" minWidth="10.0" prefWidth="219.0" />
@@ -74,11 +74,17 @@
             </LineChart>
             <JFXBadge fx:id="allot" prefHeight="229.0" prefWidth="219.0" GridPane.columnIndex="1">
                <children>
-                  <JFXButton buttonType="RAISED" onAction="#launchSearch" text="Launch" textFill="WHITE" translateY="75.0">
+                  <JFXButton buttonType="RAISED" onAction="#launchSchedule" text="Launch" textFill="WHITE" translateY="75.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
+                  <FontAwesomeIconView glyphName="CALENDAR" scaleX="5.0" scaleY="5.0" translateX="55.0" />
+                  <Label text="Scheduling" textFill="WHITE" translateX="-40.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children></JFXBadge>
             <JFXBadge fx:id="access" GridPane.columnIndex="3">
                <children>
@@ -161,7 +167,7 @@
                      <children>
                         <JFXButton layoutX="81.0" layoutY="6.0" onAction="#clear" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Clear" />
                         <JFXButton layoutX="157.0" layoutY="6.0" onAction="#clearAll" prefHeight="27.0" prefWidth="74.0" styleClass="sub_button" text="Clear All" />
-                        <JFXButton layoutY="6.0" onAction="#showNotif" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Show" />
+                        <JFXButton layoutY="6.0" onAction="#showNotif" prefHeight="27.0" prefWidth="63.0" styleClass="sub_button" text="Reload" />
                      </children>
                   </AnchorPane>
                   <Label prefHeight="42.0" prefWidth="231.0" style="-fx-background-color: darkred; -fx-padding: 5;" text="Notifications" textFill="#eee9e9">

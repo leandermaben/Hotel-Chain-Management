@@ -95,6 +95,7 @@ public class AdminNotificationController {
     	    		ps.execute();
         		}
         	}
+    		notif.setText("");
     		stat.setTextFill(Color.GREEN);
     		stat.setText("Successful");
     	}catch(Exception e) {

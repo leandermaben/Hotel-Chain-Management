@@ -93,16 +93,17 @@ public class AdminPageController {
     public void setState(State st) {
     	state=st;
     	headerController.setState(state);
-    	headerController.getBackbtn().setVisible(false);
-    	sideBarController.setState(state);
+        headerController.getBackbtn().setVisible(false);
+        sideBarController.setState(state);
+        showGraph();
     	showNotif();
-    	showGraph();
     }
     @FXML
     void launchAccess() {
     	try {
     		ArrayList<Object> fx=state.getPage("Clearance");
-			((ClearanceController)fx.get(1)).setState(state);
+    		if((boolean)fx.get(2))
+    			((ClearanceController)fx.get(1)).setState(state);
     		state.getStage().setScene((Scene)fx.get(0));
     	}
     	catch(Exception e) 
@@ -111,14 +112,24 @@ public class AdminPageController {
     	}
     }
     @FXML
-    void launchAllot() {
-
+    void launchSchedule() {
+    	try {
+    		ArrayList<Object> fx=state.getPage("Schedule");
+    		if((boolean)fx.get(2))
+    			((ScheduleController)fx.get(1)).setState(state);
+    		state.getStage().setScene((Scene)fx.get(0));
+    	}
+    	catch(Exception e) 
+    	{
+    		e.printStackTrace();
+    	}
     }
     @FXML
     void launchSearch() {
     	try {
     		ArrayList<Object> fx=state.getPage("Search");
-			((SearchController)fx.get(1)).setState(state);
+    		if((boolean)fx.get(2))
+    			((SearchController)fx.get(1)).setState(state);
     		state.getStage().setScene((Scene)fx.get(0));
     	}
     	catch(Exception e) 
@@ -131,7 +142,8 @@ public class AdminPageController {
     void launchBooking() {
     	try {
     		ArrayList<Object> fx=state.getPage("Booking");
-			((BookingController)fx.get(1)).setState(state);
+    		if((boolean)fx.get(2))
+    			((BookingController)fx.get(1)).setState(state);
     		state.getStage().setScene((Scene)fx.get(0));
     	}
     	catch(Exception e) 
@@ -145,7 +157,8 @@ public class AdminPageController {
     void launchLogistics() {
     	try {
     		ArrayList<Object> fx=state.getPage("Logistics");
-			((LogisticsController)fx.get(1)).setState(state);
+    		if((boolean)fx.get(2))
+    			((LogisticsController)fx.get(1)).setState(state);
     		state.getStage().setScene((Scene)fx.get(0));
     	}
     	catch(Exception e) 
@@ -157,13 +170,21 @@ public class AdminPageController {
     @FXML
     void notifyByAdmin() {
     	try {
-    		Stage stage=new Stage();
+    		
     		ArrayList<Object> fx=state.getPage("AdminNotification");
-    		((AdminNotificationController)fx.get(1)).setStage(stage);
-    		((AdminNotificationController)fx.get(1)).setState(state);
-    		stage.setScene((Scene)fx.get(0));
-    		stage.initStyle(StageStyle.TRANSPARENT);
+    		if((boolean)fx.get(2)) {
+    			Stage stage=new Stage();
+        		((AdminNotificationController)fx.get(1)).setStage(stage);
+        		((AdminNotificationController)fx.get(1)).setState(state);
+        		stage.initStyle(StageStyle.TRANSPARENT);
+        		fx.add(stage);
+        		stage.setScene((Scene)fx.get(0));
+    		}
+
+    		Stage stage=((Stage)fx.get(3));
+    		stage.toFront();
     		stage.show();
+    		
     	}
     	catch(Exception e) 
     	{

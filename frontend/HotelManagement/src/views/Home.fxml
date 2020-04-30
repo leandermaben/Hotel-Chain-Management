@@ -33,6 +33,84 @@
       </ImageView>
       <StackPane layoutX="443.0" layoutY="25.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <children>
+            <GridPane fx:id="set">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <JFXBadge opacity="0.75" prefHeight="618.0" prefWidth="501.0" style="-fx-background-color: black; -fx-border-color: transparent;">
+                     <children>
+                        <Label prefHeight="59.0" prefWidth="95.0" text="Setup" textFill="WHITE" translateX="-175.0" translateY="-250.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="fname" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="First Name" translateX="-70.0" translateY="-170.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="lname" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Last Name" translateX="-70.0" translateY="-90.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="phone" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Phone Number" translateX="-70.0" translateY="-10.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="aadhar" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Aadhar Number" translateX="-70.0" translateY="70.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXRadioButton text="Female" translateY="130.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gd" />
+                           </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXPasswordField fx:id="pass" labelFloat="true" maxWidth="300.0" promptText="Password" translateX="-70.0" translateY="170.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXPasswordField>
+                        <JFXPasswordField fx:id="conpass" labelFloat="true" maxWidth="300.0" promptText="Confirm Password" translateX="-70.0" translateY="240.0" unFocusColor="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="15.0" />
+                           </font>
+                        </JFXPasswordField>
+                        <JFXButton onAction="#setup" style="-fx-border-color: transparent;" text="Submit" translateX="200.0" translateY="270.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton onAction="#signinDisp" style="-fx-border-color: transparent;" text="Sign In" translateX="190.0" translateY="-250.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <Label text="Use Employee Id 1000 for future Sign In" translateX="-90.0" translateY="-210.0">
+                           <font>
+                              <Font name="SansSerif Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXRadioButton text="Male" toggleGroup="$gd" translateX="-150.0" translateY="130.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                        </JFXRadioButton>
+                        <Label fx:id="setmess" prefHeight="25.0" prefWidth="223.0" translateX="-100.0" translateY="280.0" />
+                     </children>
+                  </JFXBadge>
+               </children>
+            </GridPane>
             <GridPane fx:id="sign" prefHeight="559.0" prefWidth="501.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -70,83 +148,7 @@
                         </JFXButton>
                      </children>
                   </JFXBadge>
-               </children>
-            </GridPane>
-            <GridPane fx:id="set">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <JFXBadge opacity="0.75" prefHeight="618.0" prefWidth="501.0" style="-fx-background-color: black; -fx-border-color: transparent;">
-                     <children>
-                        <Label prefHeight="59.0" prefWidth="95.0" text="Setup" textFill="WHITE" translateX="-175.0" translateY="-250.0">
-                           <font>
-                              <Font name="SansSerif Bold" size="32.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField fx:id="fname" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="First Name" translateX="-70.0" translateY="-170.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXTextField fx:id="lname" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Last Name" translateX="-70.0" translateY="-90.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXTextField fx:id="phone" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Phone Number" translateX="-70.0" translateY="-10.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXTextField fx:id="aadhar" labelFloat="true" maxWidth="300.0" prefWidth="200.0" promptText="Aadhar Number" translateX="-70.0" translateY="70.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXRadioButton text="Male" translateX="-150.0" translateY="150.0">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="gd" />
-                           </toggleGroup>
-                           <font>
-                              <Font name="SansSerif Bold" size="16.0" />
-                           </font>
-                        </JFXRadioButton>
-                        <JFXRadioButton text="Female" toggleGroup="$gd" translateY="150.0">
-                           <font>
-                              <Font name="SansSerif Bold" size="16.0" />
-                           </font>
-                        </JFXRadioButton>
-                        <JFXPasswordField fx:id="pass" labelFloat="true" maxWidth="300.0" promptText="Password" translateX="-70.0" translateY="200.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <JFXPasswordField fx:id="conpass" labelFloat="true" maxWidth="300.0" promptText="Confirm Password" translateX="-70.0" translateY="270.0" unFocusColor="WHITE">
-                           <font>
-                              <Font name="SansSerif Bold" size="15.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <JFXButton onAction="#setup" style="-fx-border-color: transparent;" text="Submit" translateX="200.0" translateY="270.0">
-                           <font>
-                              <Font name="SansSerif Bold" size="16.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton onAction="#signinDisp" style="-fx-border-color: transparent;" text="Sign In" translateX="190.0" translateY="-250.0">
-                           <font>
-                              <Font name="SansSerif Bold" size="16.0" />
-                           </font>
-                        </JFXButton>
-                        <Label text="Use Employee Id 1000 for future Sign In" translateX="-90.0" translateY="-210.0">
-                           <font>
-                              <Font name="SansSerif Regular" size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </JFXBadge>
+                  <Label fx:id="mess" prefHeight="28.0" prefWidth="193.0" text="Label" translateX="50.0" translateY="135.0" />
                </children>
             </GridPane>
          </children>
